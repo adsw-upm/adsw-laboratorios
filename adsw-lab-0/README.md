@@ -146,7 +146,7 @@ Este paquete se instaló junto con la instalación del proyecto ADSW-lab0 en el 
 
 3.  **Crear una clase de pruebas y generar pruebas.**
 Las pruebas que se proponen son:
-    1.  Añadir el valor *1* valor y comprobar que el tamaño de la lista es *1.* Luego,
+    1.  Añadir el valor *1* y comprobar que el tamaño de la lista es *1.* Luego,
         quitar un valor y comprobar que se retorna un *1* y que el tamaño
         es 0.
     2.  Haga algo similar añadiendo varios valores, sin llenar la lista, y
