@@ -1,0 +1,63 @@
+@startuml
+class DefaultRecommender [[java:es.upm.dit.adsw.movies.DefaultRecommender]] {
+	+DefaultRecommender(metadata: String)
+	+DefaultRecommender(movies: List<Movie>, lang: String)
+	+DefaultRecommender(metadata: String, lang: String)
+	+recommend(n: int): List<Movie>
+	+recommend(n: int, lang: String): List<Movie>
+	+{static} main(args: String[]): void
+}
+class Movie {
+}
+DefaultRecommender --> "*" Movie : movies
+class Movie {
+}
+DefaultRecommender --> "1" Movie : recommend()
+interface Recommender {
+}
+Recommender <|.. DefaultRecommender
+
+class DefaultSorter [[java:es.upm.dit.adsw.movies.DefaultSorter]] {
+	+sort(movies: Movie[]): void
+}
+interface MovieSorter {
+}
+MovieSorter <|.. DefaultSorter
+interface MovieSorter [[java:es.upm.dit.adsw.movies.MovieSorter]] {
+	sort(movies: Movie[]): void
+}
+interface Recommender [[java:es.upm.dit.adsw.movies.Recommender]] {
+	recommend(n: int): List<Movie>
+	recommend(n: int, lang: String): List<Movie>
+}
+class Movie [[java:es.upm.dit.adsw.movies.Movie]] {
+	~id: int
+	~popularity: float
+	~vote_average: float
+	~imdb_id: String
+	~original_title: String
+	~budget: Integer
+	~genres: List<String>
+	~homepage: String
+	~original_language: String
+	~overview: String
+	~release_date: LocalDate
+	~revenue: Float
+	~runtime: Float
+	~spoken_languages: List<String>
+	~tagline: String
+	~title: String
+	~adult: boolean
+	~cast: List<String>
+	+Movie(id: int, popularity: float, ..., adult: boolean)
+	+{static} allFromFile(metadata: String, castfile: String): List<Movie>
+	+{static} allFromFile(metadata: String): ArrayList<Movie>
+	+setCast(cast: List<String>): void
+	+addActor(name: String): void
+	+toString(): String
+	+compareTo(other: Movie): int
+}
+interface "Comparable<Movie>" as Comparable_Movie_ {
+}
+Comparable_Movie_ <|.. Movie
+@enduml
