@@ -79,9 +79,12 @@ Como hemos visto en teoría, en Java la clase `Comparable` nos permite establece
 Las clases típicas como String ya contienen una implementación por defecto de `compareTo`, pero si creamos clases personalizadas deberemos especificar nuestra propia implementación.
 
 En este ejercicio, **desarrollaremos el método `compareTo`** para la clase `Movie`.
-Esto nos permitirá en el futuro ordenar películas en función de la popularidad.
+Dada una una instancia de la clase `Movie` (`this`), su método `compareTo` nos permitirá compararla con otra instancia (`other`), basándose en la popularidad de ambas películas.
+El método ha de devolver: un valor de cero si ambas películas tienen la misma popularidad, un valor negativo si `this` es menos popular que `other`, y un valor positivo si `other` es más popular que `this` (el resto de casos).
+Este método nos permitirá en el futuro ordenar películas en función de su popularidad.
 
-Para comprobar que el método funciona, añadiremos una **prueba unitaria** al conjunto de pruebas del ejercicio anterior.
+Para comprobar que el método funciona, añadiremos una o más **pruebas unitarias** al conjunto de pruebas del ejercicio anterior.
+Estas pruebas deberán garantizar que, para algunos ejemplos útiles, el valor devuelto por `compareTo` es el adecuado.
 
 Nota: Para comprobar el funcionamiento, habrá que comparar películas con diferentes popularidades.
 Sin embargo, el constructor de la clase `Movie` requiere varios parámetros y crear varias películas mediante ese constructor sería muy tedioso.
