@@ -16,6 +16,22 @@ En la práctica 2 queremos realizar un algoritmo que haga el cálculo del [núme
 
 Para llegar a ese objetivo final de la práctica 2, vamos a tener que realizar varios sub-objetivos que serán el tema del laboratorio 2.
 
+# Requisitos para importar el proyecto Laboratorio2.zip
+Os hemos facilitado el proyecto **Laboratorio2.zip** para empezar con el laboratorio 2, este código hace referencia al proyecto **lab1-ordenacion**, no es tener resuelta la práctica 1 correctamente. Solo queremos usar la clase **Movie**
+Es posible que haya que cambiar la definición de los atributos *title* y *cast* de la clase **Movie** y ponerlos a *public* para que sean accesibles desde nuestro proyecto.
+
+```java
+/**
+* Título de la película en inglés
+*/
+public String title;
+/**
+* Elenco de la película. Ejemplo: "Tom Hanks", "Matt Damon"...
+*/
+public List<String> cast;
+```
+
+
 # Objetivo de laboratorio 2 (necesario para hacer la práctica 2)
 Queremos convertir los datos de las películas del laboratorio y práctica 1 en un grafo, como se muestra en la figura. De esta manera, en la práctica 2 podamos aplicar algoritmos de búsqueda avanzados como el algoritmo de **Dijkstra** y, de esta manera, obtener el código de Bacon.
 ```mermaid
