@@ -49,6 +49,8 @@ Os proporcionamos un proyecto para empezar con:
 
 2. Una clase llamada "GraphLoaderSmokeTest.java" donde tenemos unas pruebas básicas para probar los métodos de la clase anterior.
 
+3. Una clase llamada "TestGraphLoader.java" dónde tenemos unas pruebas unitarias mínimas que tiene que pasar vuestro código. Se pueden añadir más métodos de pruebas unitarias si lo estima necesario.
+
 
 # Diagrama de clases
 ```mermaid	
