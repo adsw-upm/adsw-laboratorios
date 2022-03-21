@@ -49,7 +49,6 @@ Os proporcionamos un proyecto para empezar con:
 
 2. Una clase llamada "GraphLoaderSmokeTest.java" donde tenemos unas pruebas básicas para probar los métodos de la clase anterior.
 
-3. 👀👀 Una biblioteca, o el código de Princeton de los grafos.
 
 # Diagrama de clases
 ```mermaid	
@@ -78,10 +77,10 @@ classDiagram
 ```
   Atributos de clase:
 
-  * **Map<String, Integer> actorsMap** Es un mapa en el que la clave será el nombre del actor y nos devolverá un objeto de la clase Integer. Este valor nos indicará el vértice del actor en el grafo. Nos será muy útil en la práctica.
-  * **Map<DirectedEdge, Movie> moviesMap** Es un mapa donde la clave será ina arista y nos devolverá una película de la clase Movie. Este valor nos indicará la película asociada a una arista. Igualmente nos será muy útil en la práctica.
   * **EdgeWeightedDigraph g** es el grafo dirigido donde vamos a representar los vértices (actores) y las aristas (película donde han actuado un par de actores).
   * **int actorsCount = 0** nos servirá para saber cual es el último número de actor que hemos introduccido.
+  * **Map<String, Integer> actorsMap** Es un mapa en el que la clave será el nombre del actor y nos devolverá un objeto de la clase Integer. Este valor nos indicará el vértice del actor en el grafo. Nos será muy útil en la práctica.
+  * **Map<DirectedEdge, Movie> moviesMap** Es un mapa donde la clave será ina arista y nos devolverá una película de la clase Movie. Este valor nos indicará la película asociada a una arista. Igualmente nos será muy útil en la práctica.
 
 # Sub-objetivos
 1. Implementar el método **getActorID(String actor)**, que debe devolver el Integer que representa al actor, búscandolo en **ActorMap** y si no lo encuentra, deberá asignarle el siguiente entero (**actorsCount**) y guardarlo en **ActorMap**
