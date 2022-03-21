@@ -73,6 +73,7 @@ Os proporcionamos un proyecto para empezar con:
 ```mermaid	
 classDiagram
       GraphLoader <.. GraphLoaderSmokeTest
+      GraphLoader <.. TestGraphLoader
       GraphLoaderSmokeTest ..> Movie
 
       class GraphLoader{
