@@ -103,7 +103,7 @@ classDiagram
   * **Map<DirectedEdge, Movie> moviesMap** Es un mapa donde la clave será ina arista y nos devolverá una película de la clase Movie. Este valor nos indicará la película asociada a una arista. Igualmente nos será muy útil en la práctica.
 
 # Sub-objetivos
-1. Implementar el método **getActorID(String actor)**, que debe devolver el Integer que representa al actor, búscandolo en **ActorMap** y si no lo encuentra, deberá asignarle el siguiente entero (**actorsCount**) y guardarlo en **ActorMap**
+1. Implementar el método **getActorID(String actor)**, que debe devolver el Integer que representa al actor, búscandolo en **actorsMap** y si no lo encuentra, deberá asignarle el siguiente entero (**actorsCount**) y guardarlo en **actorsMap**
 2. Implementar el método **void addEdge(String actor1, String actor2, Movie movie)**, que debe añadir dos **DirectedEdge** (uno del Actor1 al Actor2 y otro del Actor2 al Actor1) al grafo **g** (No olvidar que hay un moviesMap donde deberíamos guardar dichos enlaces ).
 3. Implementar el método **List<String[]> getActorsPairs(Movie movie)**, que dada una película. Debe devolver una lista de parejas (representado como un array de Strings) de actores (Strings) que se empareje uno por uno con todos los actores.
 3. Implementar el método  **void loadGraph(List<Movie> movies, int actorNumber)**, este método usa de los demás métodos. Primero crea un **EdgeWeightedDigraph** con el tamaño de vértices como actores se pase por parámetro. Después, por cada pelicula, y por cada par de actores de la película (usando el método **getActorsPairs**) llamar al método **addEdge** para añadir al par de actores al grafo.
