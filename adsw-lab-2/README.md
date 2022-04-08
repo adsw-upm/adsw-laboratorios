@@ -47,6 +47,7 @@ HC -- Man of Steel --- DL([Diane Lane])
 KB -- My Dog Skip --- DL([Diane Lane])
 TH -- That Thing you Do! --- CH([Clint Howard])
 CH -- My Dog Skip --- DL
+KB -- My Dog Skip --- CH
 ```
 
 👀NOTA: Los actores serán nuestros vértices y las películas serán las aristas.
