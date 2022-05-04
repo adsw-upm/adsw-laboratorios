@@ -112,7 +112,6 @@ El método principal de esta clase crea todos los componentes necesarios: un poo
 
 El método procesarSegmentos está encargado de procesar los segmentos: enviar los segmentos al monitor, obtener los resultados e integrar los resultados. En concreto, en este método se pide que se desarrolle el código necesario para interaccionar con el monitor
 
-Un resultado se debe almacenar con una
 
 # Ejercicio 2: Desarrollar la clase Hebra.
 
