@@ -100,15 +100,19 @@ A continuación, se describe brevemente el contenido de estas clases:
 
 En el fichero comprimido que se proporciona incluye todo el código de las siguientes clases: Movie, SegmentoInterface, Segmento y Pool. Además se proporciona una biblioteca (fichero con extensión `monitor.jar`) de la clase MonitorSegmentos. De esta manera se puede ejecutar el programa, sin tener que implementar este monitor.
 
-En este laboratorio hay que completar las clases InvertirActores y Hebra, como se describe a continuación.
+El resultado de la inversión de actores será un diccionario, en el que la clave es un actor y el valor será la lista de las películas en las que ha actuado.
 
+Los resultados parciales se almacenan en un atributo con el mismo nombre, en la clase ```invertirActores```.
+
+En este laboratorio hay que completar las clases InvertirActores y Hebra, como se describe a continuación.
 
 # Ejercicio 1: Completar el método procesarSegmentos de la clase InvertirActores
 
-El método principal de esta clase crea todos los componentes necesarios: un pool y un monitor. El pool debe ejeutar un conjunto de hebras.
+El método principal de esta clase crea todos los componentes necesarios: un pool y un monitor. El pool debe ejecutar un conjunto de hebras.
 
 El método procesarSegmentos está encargado de procesar los segmentos: enviar los segmentos al monitor, obtener los resultados e integrar los resultados. En concreto, en este método se pide que se desarrolle el código necesario para interaccionar con el monitor
 
+Un resultado se debe almacenar con una
 
 # Ejercicio 2: Desarrollar la clase Hebra.
 
