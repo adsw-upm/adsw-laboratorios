@@ -1,6 +1,6 @@
 # Laboratorio 0 - ADSW
 
-Análisis y Diseño de Sowftware, 2022
+Análisis y Diseño de Sowftware, 2023
 
 Grado en Ingeniería de Tecnologías y Servicios de 
 Telecomunicación 
@@ -180,7 +180,7 @@ automáticamente](media/ab71a7ed2415c141b4e8ca0f7bc41c91a201debc.png)
 Use las técnicas propuestas en este enunciado para comprobar si el
 código es correcto.
 
-## Ejercicio 4: Pruebas de nuestra instalación de eclipse
+## Ejercicio 4: Pruebas de nuestra instalación de eclipse (Borrador)
 
 El proyecto que hemos descargado permite practicar el proceso de entrega de prácticas de la asignatura y comprobar que nuestra instalación de Eclipse particular es correcta. Este laboratorio no es puntuable, pero esta entrega nos permite probar nuestra instalación y asegurar que no hubiera problemas en las prácticas evaluables. 
 
@@ -188,7 +188,7 @@ El proyecto que hemos instalado incluye un script de entrega de prácticas. Ese 
 
 - El proyecto ADSW-lab0 incluye un script de entrega (Practica0Entrega.launch) que podemos ejecutar seleccionando el script y ejecutando Run \> Run As \> Practica0Entrega. Este script nos va indicando en la consola de Eclipse los pasos que va dando (chequeos y compilaciones, ejecuciones de pruebas, calculo de notas, comprimir entregas, subidas a moodle, ...). Nos muestra la estimación de nota calculada. 
 
--	Si hay errores de compilación, o si lo que se debe desarrollar en la práctica no se ajusta a lo que indica la guía (identificadores, signaturas de métodos, visibilidad de clases o métodos, …), las pruebas no se pueden ejecutar y el fichero zip no se construirá. Si ha podido ejecutar pruebas dejará construido un fichero ADSW-lab0.zip en la raíz del proyecto Eclipse. Para hacerlo visible debemos refrescar el proyecto con el comando Refresh del menú de contexto del explorador de proyectos de Eclipse.
+- Si hay errores de compilación, o si lo que se debe desarrollar en la práctica no se ajusta a lo que indica la guía (identificadores, signaturas de métodos, visibilidad de clases o métodos, …), las pruebas no se pueden ejecutar y el fichero zip no se construirá. Si ha podido ejecutar pruebas dejará construido un fichero ADSW-lab0.zip en la raíz del proyecto Eclipse. Para hacerlo visible debemos refrescar el proyecto con el comando Refresh del menú de contexto del explorador de proyectos de Eclipse.
 
 - Si tenemos un fichero entregable, se arranca un browser empotrado que nos permite logarnos en Moodle. Es la primera vez que utilizamos esta herramienta y es compleja porque depende de muchas cosas (versión de Eclipse, sistema operativo, versión Java que utilizamos). Si queremos hacer la entrega, nos logamos en moodle, y subirá la entrega, y subirá también la nota calculada. Si no queremos hacer la entrega simplemente cerramos el browser y terminará la entrega, sin subirse nada a Moodle. 
 
@@ -199,11 +199,16 @@ El proyecto que hemos instalado incluye un script de entrega de prácticas. Ese 
 
 ## Anexo 1: Cargar un proyecto en Eclipse
 
+Alternatica 1: 
+
+- Descromprime el fichero (ADSW-lab0.zip) que se obtenido
+
 - Seleccione el menú File > Import > Existing Projects into
   Workspace > Next
-- Navegue hasta el archivo zip que contiene el proyecto tal como se ha
-  bajado de Moodle.
+- Navegue hasta el directorio que se ha generado al descomprimir 
+  el fichero original.
 - Compruebe que el proyecto está marcado, y seleccione Finish
+
 
 ## Anexo 2: Generar y acceder a la documentación con Javadoc en Eclipse
 
@@ -249,17 +254,14 @@ import java.util.logging.*;
 -  Crear el configurador, que debe ser un atributo de la clase:
 
 ```java
-static final Logger LOGGER = Logger.getLogger(ListaTrazas.class.getName());
+static  Logger LOGGER;
 ```
 
 -  Configurar el registrador. Ejecutar las siguientes instrucciones en
     el constructor en el que se van a poner los registros:
 
 ```java
-LOGGER.setUseParentHandlers(false);
-handler = new ConsoleHandler();
-handler.setLevel(Level.FINEST);
-LOGGER.addHandler(handler);
+LOGGER = Logger.getLogger(ListaDoblementeEnlazada.class.getName());
 LOGGER.setLevel(Level.FINEST);
 ```
 
