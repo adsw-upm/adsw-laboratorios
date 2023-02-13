@@ -184,6 +184,8 @@ código es correcto.
 
 El proyecto que hemos descargado permite practicar el proceso de entrega de prácticas de la asignatura y comprobar que nuestra instalación de Eclipse particular es correcta. Este laboratorio no es puntuable, pero esta entrega nos permite probar nuestra instalación y asegurar que no hubiera problemas en las prácticas evaluables. 
 
+En Moodle hay un vídeo ilustrando el proceso en Windows y Mac. Para instalar Ubuntu hay un enlace con los cambios que hay que realizar.
+
 El proyecto que hemos instalado incluye un script de entrega de prácticas. Ese script nos permitirá probar nuestras instalaciones. El proceso de entrega:
 
 - El proyecto ADSW-lab0 incluye un script de entrega (Practica0Entrega.launch) que podemos ejecutar seleccionando el script y ejecutando Run \> Run As \> Practica0Entrega. Este script nos va indicando en la consola de Eclipse los pasos que va dando (chequeos y compilaciones, ejecuciones de pruebas, calculo de notas, comprimir entregas, subidas a moodle, ...). Nos muestra la estimación de nota calculada. 
