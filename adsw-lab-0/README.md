@@ -180,7 +180,7 @@ automáticamente](media/ab71a7ed2415c141b4e8ca0f7bc41c91a201debc.png)
 Use las técnicas propuestas en este enunciado para comprobar si el
 código es correcto.
 
-## Ejercicio 4: Pruebas de nuestra instalación de eclipse (Borrador)
+## Ejercicio 4: Pruebas de nuestra instalación de eclipse
 
 El proyecto que hemos descargado permite practicar el proceso de entrega de prácticas de la asignatura y comprobar que nuestra instalación de Eclipse particular es correcta. Este laboratorio no es puntuable, pero esta entrega nos permite probar nuestra instalación y asegurar que no hubiera problemas en las prácticas evaluables. 
 
