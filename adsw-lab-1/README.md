@@ -3,8 +3,9 @@
 En este laboratorio analizaremos datos de registros de geolocalización (*checkins*) de usuarios.
 En particular, vamos a encontrar:
 
-* Usuarios que se han registrado registro en el mismo sitio a la vez
+* Usuarios que se han registrado en el mismo sitio a la vez
 * Usuarios que se han registrado en algún sitio en un cierto periodo de tiempo
+* Los últimos usuarios que han hecho un registro
 
 
 ## Objetivos
@@ -49,6 +50,15 @@ Los ejercicios consisten en **implementar la clase `AlmacenLab1`** especificada 
 Esta clase funcionará igual que la clase `es.upm.dit.adsw.geosocial.GeoAlmacen`, con la diferencia de que también implementará los métodos definidos en el interfaz `es.upm.dit.adsw.lab1.Lab1Interface`.
 
 **No se debe modificar ningún fichero fuera del paquete `es.upm.dit.adsw.lab1`, ni la interfaz `Lab1Interface`**. Se pueden ampliar los tests con pruebas nuevas, pero no se aconseja modificar las ya existentes.
+
+
+### Ejercicio 0: Descargar el código e importarlo en Eclipse
+
+Se debe descargar el fichero `ADSW-lab1.zip` del [repositorio en GitHub](https://github.com/adsw-upm/adsw-laboratorios).
+El fichero debe importarse en eclipse mediante la opción `File -> Import -> Existing projects into workspace`, y después seleccionando el fichero `ADSW-lab1.zip`.
+
+Si todo ha ido bien. veremos un proyecto con dos paquetes: `es.upm.dit.adsw.lab1` y `es.upm.dit.adsw.geosocial`.
+
 ### Ejercicio 1: Implementar la clase `AlmacenLab1`
 
 La clase `AlmacenLab1` debe implementar la interfaz `es.upm.dit.adsw.lab1.Lab1Interface`.
