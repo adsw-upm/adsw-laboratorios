@@ -30,10 +30,7 @@ Además, implementaremos una serie de métodos que nos permitirán buscar entre 
 Cada usuario tiene un identificador, una lista de registros y una lista de amigos.
 Un registro contiene el identificador del usuario, una localización (con latitud y longitud) y el tiempo en que se hizo el registro (`LocalDateTime`).
 
-Utilizaremos conjuntos de datos de diferente tamaño:
-
-- Los ficheros `data/locations<N>.tsv` contienen registros de `<N>` usuarios (desde 10 hasta 10.000)
-- Los ficheros `data/friends<N>.tsv` contienen los enlaces entre los usuarios del fichero de localizaciones correspondiente
+Utilizaremos conjuntos de datos de diferente tamaño, de la forma `data/locations<N>.tsv`, que contienen registros de `<N>` usuarios (desde 10 hasta 10.000).
 
 De momento, nos centraremos en los ficheros más pequeños (entre 10 y 100 usuarios).
 En siguientes prácticas tendremos que utilizar ficheros mayores.
@@ -58,6 +55,9 @@ Se debe descargar el fichero `ADSW-lab1.zip` del [repositorio en GitHub](https:/
 El fichero debe importarse en eclipse mediante la opción `File -> Import -> Existing projects into workspace`, y después seleccionando el fichero `ADSW-lab1.zip`.
 
 Si todo ha ido bien. veremos un proyecto con dos paquetes: `es.upm.dit.adsw.lab1` y `es.upm.dit.adsw.geosocial`.
+
+Cada uno de los siguientes ejercicios tiene una serie de pruebas asociadas.
+
 
 ### Ejercicio 1: Implementar la clase `AlmacenLab1`
 
@@ -93,8 +93,17 @@ public class AlmacenLab1 extends ... implements ... {
         ...
     }
 
-
 ```
+
+Para probar que el constructor funciona, se pueden utilizar los tests unitarios de `TestsFuncionales.java`.
+En particular, los tests `test1Constructor` y `test2ConstructorFichero`.
+
+Para lanzar los tests, la clase debe compilar correctamente, por lo que deberemos añadir todos los métodos necesarios a la clase.
+Esto se puede hacer manualmente (comprobando la interfaz), o utilizando la función `add unimplemented methods` de eclipse:
+
+![Add unimplemented methods](unimplemented.png)
+
+Tras hacerlo, deberíamos ver que los dos primeros tests aparecen en verde, y el resto fallan.
 
 ### Ejercicio 2: Diseñar e implementar el algoritmo de búsqueda de coincidencias (`buscarCoincidencias`)
 
@@ -124,6 +133,9 @@ public Set<Integer> buscarCoincidencias(int id_usuario) {
 }
 ```
 
+Para probar esta funcionalidad, se proporcionan dos tests: uno que crea un almacén con unos usuarios específicos (`test3CoincidentesManual`), y otro que parte del fichero de localizaciones (`test4Coincidentes`).
+Se recomienda leer los tests para entender el proceso y realizar pruebas adicionales si se considerase necesario.
+
 ### Ejercicio 3: Implementar el método de búsqueda de últimos registros (`getUltimos`)
 
 El siguiente método a desarrollar es `getUltimos`.
@@ -150,6 +162,8 @@ public List<Integer> getUltimos(int numero) {
 
 }
 ```
+
+Al igual que en el ejercicio anterior, para probar esta funcionalidad se proporcionan dos tests (`test5UltimosManual` y `test6Ultimos`).
 
 ### Ejercicio 4: Implementar el método de búsqueda de registros en un intervalo (`buscarPorTiempo`)
 
@@ -195,7 +209,11 @@ Las instrucciones completas sobre cómo debe funcionar este método están en el
 	public List<Integer> buscarUsuariosPorTiempo(LocalDateTime fecha, int margen);
 ```
 
+Para comprobar esta funcionalidad se proporciona un tests (`test7BusquedaTiempoManual`).
+Una vez más, se recomienda entender el código y añadir pruebas adicionales.
+
 ## Anexos:
+
 
 ### Anexo 1: Cargar un proyecto en Eclipse
 
@@ -369,11 +387,94 @@ depurador.
     funciona, sin entrar en detalles ni casos particulares.
 
 
-Análisis y Diseño de Software, 2023
 
-Grado en Ingeniería de Tecnologías y Servicios de 
-Telecomunicación 
+### Anexo 6: código de ejemplo `main`
 
-ETSI de Telecomunicación
+Se recomienda probar las diferentes funcionalidades mediante los tests proporcionados.
+No obstante, también se puede utilizar el siguiente código que pone en uso todas las funcionalidades del laboratorio:
 
-Universidad Politécnica de Madrid
+
+```java
+public static void main(String[] args) {
+	Usuario u1 = new Usuario(1);
+	Usuario u2 = new Usuario(2);
+	Usuario u3 = new Usuario(3);
+	u1.registrar(new Localizacion(10, 0));
+	u2.registrar(new Localizacion(10, 0));
+	
+	Localizacion loc1 = new Localizacion(0, 100);
+	Localizacion loc2 = new Localizacion(100, 0);
+	LocalDateTime ahora = LocalDateTime.now();
+	LocalDateTime en1 = ahora.minusMinutes(1);
+	LocalDateTime en2 = ahora.minusMinutes(2);
+	LocalDateTime en15 = ahora.minusMinutes(15);
+	LocalDateTime en5 = ahora.minusMinutes(5);
+
+	u1.registrar(loc1, ahora);
+
+	u2.registrar(loc1, en1);
+	u2.registrar(loc1, en5);
+
+	u3.registrar(loc2, en2);
+	u3.registrar(loc1, en15);
+
+	AlmacenLab1 gestor = new AlmacenLab1(Arrays.asList(u1, u2, u3));
+
+	System.out.print("El usuario u1 coincide con:");
+	for(int u: gestor.buscarCoincidencias(u1.getId())) {
+		System.out.print(" u" + u);
+	}
+	System.out.println();
+
+	for(int i=0; i<4; i++) {
+		System.out.print("Los últimos " + i + " usuarios son:");
+		for(int u: gestor.getUltimos(i)) {
+			System.out.print(" u" + u);
+		}
+		System.out.println();
+	}
+	for(int origen=0; origen<15; origen++) {
+
+		System.out.print("Registros hace " + origen + " minutos (+-2 minutos):");
+		for(int u: gestor.buscarUsuariosPorTiempo(ahora.minusMinutes(origen), 2)) {
+			System.out.print(" u" + u);
+		}
+		System.out.println();
+	}
+
+}
+```
+
+Si la implementación es correcta, se espera que la salida del programa sea la siguiente:
+
+```
+El usuario u1 coincide con: u2
+Los últimos 0 usuarios son:
+Los últimos 1 usuarios son: u1
+Los últimos 2 usuarios son: u1 u2
+Registros hace 0 minutos (+-2 minutos): u2 u1
+Registros hace 1 minutos (+-2 minutos): u3 u2 u1
+Registros hace 2 minutos (+-2 minutos): u3 u2 u1
+Registros hace 3 minutos (+-2 minutos): u3
+Registros hace 4 minutos (+-2 minutos): u2
+Registros hace 5 minutos (+-2 minutos): u2
+Registros hace 6 minutos (+-2 minutos): u2
+Registros hace 7 minutos (+-2 minutos):
+Registros hace 8 minutos (+-2 minutos):
+Registros hace 9 minutos (+-2 minutos):
+Registros hace 10 minutos (+-2 minutos):
+Registros hace 11 minutos (+-2 minutos):
+Registros hace 12 minutos (+-2 minutos):
+Registros hace 13 minutos (+-2 minutos):
+Registros hace 14 minutos (+-2 minutos): u3
+```
+
+
+	Análisis y Diseño de Software, 2023
+
+	Grado en Ingeniería de Tecnologías y Servicios de 
+	Telecomunicación 
+
+	ETSI de Telecomunicación
+
+	Universidad Politécnica de Madrid
