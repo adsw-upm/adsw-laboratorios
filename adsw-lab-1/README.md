@@ -82,16 +82,16 @@ public class AlmacenLab1 extends ... implements ... {
 	}
 
 	/**
-	 * Crea un AlmacenLab1 a partir de un fichero con las localizaciones de los usuarios.
-	 * 
-	 * @param ruta del fichero con las localizaciones
-	 * @throws FileNotFoundException Si el fichero no se encuentra
-	 * @throws ParseException Si el fichero no tiene el formato adecuado
-	 */
-    public AlmacenLab1(String localizaciones) throws FileNotFoundException, ParseException {
-    	// a implementar por el alumno
-        ...
-    }
+	* Crea un AlmacenLab1 a partir de un fichero con las localizaciones de los usuarios.
+	* 
+	* @param ruta del fichero con las localizaciones
+	* @throws FileNotFoundException Si el fichero no se encuentra
+	* @throws ParseException Si el fichero no tiene el formato adecuado
+	*/
+	public AlmacenLab1(String localizaciones) throws FileNotFoundException, ParseException {
+		// a implementar por el alumno
+		...
+	}
 
 ```
 
