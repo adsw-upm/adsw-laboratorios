@@ -1,4 +1,4 @@
-H2 style="text-align: center;">Laboratorio 4 - Sistema concurrente</H2>
+<H2 style="text-align: center;">Laboratorio 4 - Sistema concurrente</H2>
 
 <p style="text-align: center;">
 Análisis y Diseño de Software, 2023<br>
