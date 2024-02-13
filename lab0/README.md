@@ -349,19 +349,18 @@ Se caracteriza como *static* para que otras clases del proyecto puedan usar este
 ```java
 LectorPartidas.LOGGER.fine("Prueba");
 ```
-
 - Copiar el fichero logging.properties por defecto en un directorio del usuario. Este fichero se encuentra en el paquete de Java en cada computador. Para facilitar, se adjunta una versión de este fichero en la distribución de este laboratorio. 
 
 - Asignar el nivel por defecto de la consola a: FINEST
 
-```
+```java
 java.util.logging.ConsoleHandler.level = FINEST
 java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
 ```
 
 - En el código definir el fichero de configuración que el usuario ha cambiado y crear el gestor de trazas:
 
-```
+```java
 System.setProperty("java.util.logging.config.file", "/MiDirectorio/logging.properties");
 LOGGER = Logger.getLogger(ConfigurarSuma.class.getName());
 
