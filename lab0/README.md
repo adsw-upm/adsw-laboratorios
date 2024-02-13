@@ -339,6 +339,17 @@ En algunas implementaciones, la opción previa duplica las trazas. A continuaci�
 ```java
 import java.util.logging.*;
 ```
+- Crear un atributo de las clase, llamado LOGGER. 
+
+```java
+static Logger = LOGGER;
+```
+Se caracteriza como *static* para que otras clases del proyecto puedan usar este *logger*. Para ello, se podría invocar desde cualquiera clase como: 
+
+```java
+LectorPartidas.LOGGER.fine("Prueba");
+```
+
 - Copiar el fichero logging.properties por defecto en un directorio del usuario. Este fichero se encuentra en el paquete de Java en cada computador. Para facilitar, se adjunta una versión de este fichero en la distribución de este laboratorio. 
 
 - Asignar el nivel por defecto de la consola a: FINEST
