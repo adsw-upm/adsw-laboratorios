@@ -1,6 +1,7 @@
 # Laboratorios de la asignatura Análisis y Diseño de Software
 
 La manera más sencilla de descargar este código es clonarlo o importarlo en el entorno de desarrollo.
+También es posible importar el fichero `.zip` para cada laboratorio disponible en moodle.
 
 ## Instrucciones para Eclipse
 
