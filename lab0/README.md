@@ -358,7 +358,7 @@ java.util.logging.ConsoleHandler.level = FINEST
 java.util.logging.ConsoleHandler.formatter = java.util.logging.SimpleFormatter
 ```
 
-- En el código definir el fichero de configuración que el usuario ha cambiado y crear el gestor de trazas en el *main*:
+- En el código definir el fichero de configuración que el usuario ha cambiado y crear el gestor de trazas en el constructor de la clase con el *main* a ejecutar:
 
 ```java
 System.setProperty("java.util.logging.config.file", "/MiDirectorio/logging.properties");
