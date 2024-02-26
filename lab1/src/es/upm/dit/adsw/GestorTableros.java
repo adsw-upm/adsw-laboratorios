@@ -12,9 +12,8 @@ public class GestorTableros {
 
     private List<Tablero> tableros;
 
-    public static void main(String[] args) {
-        GestorTableros gestor = new GestorTableros(LectorPartidas.leerPartidasDeZip("data/partidas_extendido.zip"));
-
+    public static void main(String[] args) throws Exception {
+        GestorTableros gestor = new GestorTableros(LectorPartidas.leerPartidasZip("data/partidas_extendido.zip"));
     }
 
     /**
