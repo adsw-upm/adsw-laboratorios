@@ -8,6 +8,9 @@ El código que se desarrollará en este laboratorio será utilizado en la práct
 
 En la clase `LectorPartidas`se ha añadido un método, `leerPartidasDeZip` para leer una colección de tableros a partir de un archivo comprimido. Este método funciona igual que el método `leerPartidas` que se utilizó en el laboratorio 0, pero en lugar de trabajar con un archivo de texto, trabaja con un archivo comprimido. Esto permitirá leer colecciones de tableros aún mayores. Los resultados que se indican en este enunciado se han obtenido utilizando el archivo `partidas_extendido.zip`.
 
+> [!WARNING]
+> Si el ordenador en el que se realiza el laboratorio tiene problemas para manejar el archivo `partidas_extendido.zip`, se podrá seguir utilizando `partidas.txt` como en el laboratorio 0.
+
 ## Objetivos
 
 - Completar la implementación de la clase `Tablero`
@@ -48,7 +51,7 @@ Para almacenar el tablero en el array bidimensional, consideraremos que la posic
 ### Pruebas recomendadas
 
 - Crear un tablero vacío y recorrer el array comprobando que todas las posiciones son null (utilizar el constructor sin parámetros para crear el tablero vacío)
-- Crear un tablero con la posición inicial y comprobar que las piezas están en su sitio (utilizar el método ´tableroBasico()´ para crear el tablero inicial)
+- Crear un tablero con la posición inicial y comprobar que las piezas están en su sitio (utilizar el método `tableroBasico()` para crear el tablero inicial)
 - Crear un tablero con la siguiente distribución y comprobar que las piezas están en su sitio
 
     ```"..........K................q..k....q..................b........."```
@@ -121,6 +124,10 @@ La clase `GestorTableros` es una clase que se encarga de gestionar una colecció
 
 - El mayor tablero tiene una puntuación general de 70
 - Hay 6240 tableros con una puntuación general mayor de 25
+
+Si se usa el archivo partidas.txt
+- El mayor tablero tiene una puntuación general de 42
+- Hay 501 tableros con una puntuación general mayor de 25
 
 ## Pasos extra (opcional)
 
