@@ -48,7 +48,7 @@ desarrollamos en laboratorio y en la práctica 1.
 
 En el laboratorio 1 trabajamos en la clase `GestorTableros`, pero solo trabajamos con los tableros que incluían los ficheros.
 Otra información (por ejemplo la URL de las partidas, los usuarios de las partidas y el resto de los turnos de la partida)
-está representada en la clase `Partida`. La implmentación de la clase `Tablero` que hemos estado utilizando no incluye referencias
+está representada en la clase `Partida`. La implementación de la clase `Tablero` que hemos estado utilizando no incluye referencias
 de la clase `Tablero` a la clase `Partida`, y por tanto no podemos saber, con la información de un tablero, a la partida a la que pertenece.
 
 Para resolver este problema cambiaremos el constructor de `GestorTableros` para que guarde en un atributo la lista de las
