@@ -37,7 +37,7 @@ desarrollamos en laboratorio y en la práctica 1.
 	3. Calculamos la puntuación del tablero que nos ha devuelto `mayorTablero`
 	4. Pasamos como parámetros `tableros` y la puntuación calculada al método `busquedaBinaria` y recuperamos 
 	el índice que nos devuelve.
-	5. Con `assertEquals` podemos comprobar que el valor recuperado es el tamaño de la lista menos 1.
+	5. Con `assertEquals` podemos comprobar que el valor recuperado es el tamaño de la lista menos 3.
 
 - Podemos llamar a `busquedaBinaria` con las puntuaciones de los tableros que nos devuelve 
 `getTableroConPuntuacionMinima` y comprobar que se encuentran en las posiciones finales de la lista
