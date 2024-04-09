@@ -1,6 +1,8 @@
 # 🌟 Laboratorio 3 de ADSW: Explorando Grafos en el Ajedrez 🌟
 
-¡Bienvenidos al tercer laboratorio de ADSW! En esta ocasión, nos adentraremos en el fascinante mundo de los grafos 🌐. Usaremos nuestro conocimiento para explorar partidas de ajedrez de una manera única, representando todas las partidas como un grafo donde los nodos son tableros y las aristas son los movimientos de una pieza de un tablero a otro.
+¡Bienvenidos al tercer laboratorio de ADSW! En esta ocasión, nos adentraremos en el fascinante mundo de los grafos 🌐. 
+
+Usaremos nuestro conocimiento para explorar partidas de ajedrez de una manera única, representando todas las partidas como un grafo donde los nodos son tableros y las aristas son los movimientos de una pieza de un tablero a otro.
 
 ## Pre-requisitos 📚
 
@@ -19,7 +21,9 @@ Antes de comenzar, asegúrate de tener:
 
 ### ¿Por qué usar el algoritmo de BFS? 
 
-El algoritmo de Búsqueda en Anchura (BFS, por sus siglas en inglés) es una estructura de algoritmo ampliamente utilizada el estudio de grafos, especialmente útil para encontrar el camino más corto entre dos nodos en términos de cantidad de aristas o "saltos". Esta característica lo hace particularmente valioso en el contexto de nuestra aplicación, donde cada nodo representa un tablero de ajedrez y cada arista un movimiento. Utilizar BFS nos permite determinar la menor cantidad de movimientos necesarios para pasar de un estado del tablero a otro. 
+El algoritmo de Búsqueda en Anchura (BFS, por sus siglas en inglés) es una estructura de algoritmo ampliamente utilizada el estudio de grafos, especialmente útil para encontrar el camino más corto entre dos nodos en términos de cantidad de aristas o "saltos". 
+
+Esta característica lo hace particularmente valioso en el contexto de nuestra aplicación, donde cada nodo representa un tablero de ajedrez y cada arista un movimiento. Utilizar BFS nos permite determinar la menor cantidad de movimientos necesarios para pasar de un estado del tablero a otro. 
 
 En las clases de teoría, se ha trabajado con el algoritmo de Dijkstra, que también permite encontrar el camino mínimo entre dos nodos. Entonces, ¿cuál es la diferencia entre estos dos algoritmos? En términos generales, ninguna; ambos resuelven el mismo problema y tienen la misma complejidad, al menos en escenarios como el que vamos a trabajar en este laboratorio. El matiz que realmente nos hace decantarnos por uno u otro es que el algoritmo de Dijkstra está diseñado para trabajar con aristas que tengan pesos. Dijkstra explora el grafo partiendo desde el nodo origen, comprobando siempre el nodo con el camino más corto que aún no haya sido visitado, es decir, recorre el grafo siguiendo algún tipo de orden. Por otro lado, BFS es más simple o "tonto", según se mire, ya que no suele tener en cuenta los pesos de las aristas, pero a cambio, tiene una lógica mucho más sencilla. En resumen, ante un grafo sin pesos, ambos algoritmos se comportan de manera similar; elegimos BFS porque es más sencillo.
 
@@ -148,7 +152,7 @@ import java.io.PrintWriter;
 import java.io.IOException;
 
 public class Graph {
-	protected List<Node> nodes = new ArrayList<>();
+    protected List<Node> nodes = new ArrayList<>();
     protected List<Link> links = new ArrayList<>();
 
     public void addNode(Node node) {
@@ -246,6 +250,7 @@ Este mapa te permitirá asociar la representación de un tablero (en formato [FE
 ### Paso 2: Carga y Prueba con Archivos de Diferente Tamaño 📂➡️🔍
 
 Una vez implementada tu clase `GraphPartidas`, es hora de ponerla a prueba. Comienza cargando un fichero de muestra que contenga partidas de ajedrez representadas como grafos. Empieza probando con el fichero "muestra.txt". Es recomendable que empieces con archivos pequeños y vayas incrementando el tamaño gradualmente. Esto te permitirá observar cómo se comporta tu programa con conjuntos de datos de diferentes magnitudes.
+
 🚨 **Advertencia:** Ten especial cuidado al trabajar con archivos más grandes, como "partidas.txt", ya que el procesamiento de estos puede tardar más de 10 minutos. Empieza haciendo pruebas con ficheros con pocos datos y continua probando con ficheros con más partidas.
 
 
@@ -258,7 +263,9 @@ GraphPartidas gp = new GraphPartidas(partidas);
 gp.exportarCSV("data/muestra.csv");
 ```
 
-Con el archivo CSV generado, ahora puedes visualizar tu grafo utilizando [Cosmograph](https://cosmograph.app). Simplemente sigue estos pasos: ve a "launch" -> "load graph" y arrastra el fichero CSV que acabas de generar. En la configuración, asegúrate de que en "Source column" aparezca "from" y en "Target column" aparezca "to". Si no es así, necesitarás revisar tu proceso de generación del CSV.
+Con el archivo CSV generado, ahora puedes visualizar tu grafo utilizando [Cosmograph](https://cosmograph.app). 
+
+Simplemente sigue estos pasos: ve a "launch" -> "load graph" y arrastra el fichero CSV que acabas de generar. En la configuración, asegúrate de que en "Source column" aparezca "from" y en "Target column" aparezca "to". Si no es así, necesitarás revisar tu proceso de generación del CSV.
 
 
 ---
@@ -312,7 +319,9 @@ Después de explorar el algoritmo de Búsqueda en Anchura (BFS) a través del vi
 
 #### Estructuras de datos necesarias
 
-Antes de sumergirnos en el funcionamiento del algoritmo 🔄, es crucial comprender las estructuras de datos que necesitaremos. Tras visualizar el vídeo, ¿te atreves a pensar cuáles son esas estructuras necesarias? 🤔 Haz una pausa aquí y reflexiona. ¿Logras identificarlas? Recuerda, el verdadero desafío de este curso es desarrollar esta habilidad analítica, ya que en el examen no contarás con una guía paso a paso. ¡Es hora de activar tu ingenio y poner a prueba tus conocimientos!
+Antes de sumergirnos en el funcionamiento del algoritmo 🔄, es crucial comprender las estructuras de datos que necesitaremos. Tras visualizar el vídeo, ¿te atreves a pensar cuáles son esas estructuras necesarias? 🤔 
+
+Haz una pausa aquí y reflexiona. ¿Logras identificarlas? Recuerda, el verdadero desafío de este curso es desarrollar esta habilidad analítica, ya que en el examen no contarás con una guía paso a paso. ¡Es hora de activar tu ingenio y poner a prueba tus conocimientos!
 
 ¿Ya lo has pensado? ¡Entonces continúa! 🚀
 
