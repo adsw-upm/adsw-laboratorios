@@ -221,7 +221,7 @@ public GraphPartidas(List<Partida> partidas) {
 **Pseudocódigo del Constructor:**
 
 1. Para cada `Partida` en `partidas`, iterar a través de los `Tablero` en `Partida`.
-2. Crear o encontrar un nodo para cada `Tablero` basado en su representación FEN.
+2. Crear o encontrar un nodo para cada `Tablero` basado en su representación [FEN](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) que os recordamos que lo explicamos en el [lab0](https://github.com/adsw-upm/adsw-laboratorios/tree/main/lab0) 
 3. Conectar nodos consecutivos con aristas, representando movimientos entre tableros.
 
 Recuerda que tienes que crear un nodo por cada Tablero, pero si te vuelves a encontrar un tablero que se representa por un Nodo no debes crear uno nuevo. Puedes crear todas las aristas asignándoles un peso (weight) de 1.
@@ -238,7 +238,7 @@ Para facilitar la implementación de la clase `GraphPartidas` y hacer más senci
 private Map<String, Node> tableroToNodeMap = new HashMap<String, Node>();
 ```
 
-Este mapa te permitirá asociar la representación de un tablero (en formato FEN) directamente con el nodo correspondiente en el grafo. Usar este mapa simplificará significativamente el proceso de búsqueda y conexión de nodos, especialmente cuando estés construyendo el grafo y cuando realicemos la búsqueda en anchura (BFS).
+Este mapa te permitirá asociar la representación de un tablero (en formato [FEN](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) ) directamente con el nodo correspondiente en el grafo. Usar este mapa simplificará significativamente el proceso de búsqueda y conexión de nodos, especialmente cuando estés construyendo el grafo y cuando realicemos la búsqueda en anchura (BFS).
 
 ---
 
@@ -284,7 +284,7 @@ public List<Link> getLinksOfNode(Node node) {
 
 ### Paso 4: Implementa BFS en `GraphPartidas`
 
-Implementa el algoritmo de búsqueda en anchura (BFS) para encontrar la distancia más corta entre dos nodos basados en sus representaciones FEN.
+Implementa el algoritmo de búsqueda en anchura (BFS) para encontrar la distancia más corta entre dos nodos basados en sus representaciones [FEN](https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation) 
 
 ```java
 public int BFS(String startRepresentation, String endRepresentation) {
@@ -359,3 +359,6 @@ Imagina, por un momento, alterar la estructura de `cola` por una que opere como 
 [![Vídeo algoritmo DFS](https://img.youtube.com/vi/caI2bdJep_8/0.jpg)](https://www.youtube.com/watch?v=caI2bdJep_8)
 
 [Algoritmo DFS en VisuAlgo](https://visualgo.net/en/dfsbfs)
+
+
+
