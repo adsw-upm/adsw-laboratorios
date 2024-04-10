@@ -341,7 +341,7 @@ Revisa la documentación del método [remove de la clase ArrayList](https://docs
 #### Pseudo código del algoritmo de BFS
 
 1. 🌟 Inicialización: Crea tres ArrayLists: `cola` para los nodos a visitar, `visitados` para marcar nodos ya explorados, y `distancias` para las distancias desde el nodo inicial.
-2. 🚪 Agrega el nodo inicial a `cola`, marca como visitado en `visitados`, y establece su distancia en `distancias` a 0. El resto de las distancias deberá ser infinito. 
+2. 🚪 Agrega el nodo inicial a `cola`, marca como visitado en `visitados`, y establece su distancia en `distancias` a 0. 
 3. 🔄 Mientras `cola` no esté vacía:
    - 📤 Saca el primer nodo de `cola`.
    - 🎯 Si el nodo es el destino, ¡celebra! Has encontrado la distancia mínima.
