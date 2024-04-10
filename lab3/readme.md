@@ -352,6 +352,96 @@ Revisa la documentación del método [remove de la clase ArrayList](https://docs
        - Agrégalo a `cola`.
 4. ❌ Si no encuentras el nodo destino, retorna -1. Significa que no hay camino.
 
+### 4. 🧪 Realización de una Batería de Pruebas
+
+Tras haber implementado tus clases, es crucial verificar su correcto funcionamiento. Para ello, te recomendamos realizar una serie de pruebas denominadas "SmokeTest". Estas pruebas básicas te permitirán detectar posibles errores o comportamientos inesperados, facilitando su corrección.
+
+#### GraphPartidas
+
+En primer lugar, necesitamos poder acceder a `tableroToNodeMap` para llevar a cabo nuestras pruebas. Para ello, añade este `getter` en la clase `GraphPartidas`:
+```java
+    public Map<String, Node> getTableroToNodeMap(){
+        return this.tableroToNodeMap;
+    }
+```
+
+#### SmokeTest
+
+A continuación, te proporcionamos un esqueleto básico para tu `SmokeTest`. Este código está diseñado para evaluar aspectos fundamentales de tu implementación, asegurando que la construcción del grafo y la ejecución de BFS se realicen como se espera.
+
+```java
+import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+
+public class SmokeTest {
+
+    public static void main(String[] args) throws IOException, Exception {
+        String archivoPartidas = "data/muestra.txt";
+        List<Partida> partidas = LectorPartidas.leerPartidas(archivoPartidas);
+        GraphPartidas gp = new GraphPartidas(partidas);
+        System.out.println("Grafo creado.");
+        
+        System.out.println("\nComprobando el funcionamiento del constructor...");
+        Map<String, Node> tableroToNodeMap = gp.getTableroToNodeMap();
+        
+        // Test 1
+        if (tableroToNodeMap.size() == 235) {
+            System.out.println("[✔] Test 1 pasado correctamente");
+        } else {
+            System.out.println("[✘] Test 1 incorrecto");
+            System.out.println("Tamaño esperado del grafo: 235, tamaño actual: " + tableroToNodeMap.size());
+        }
+        
+        // Test 2
+        Node n = tableroToNodeMap.get("........Q.pk....K.......r.......Pq.......P.P..n...P.n...........");
+        if (n != null) {
+            System.out.println("[✔] Test 2 pasado correctamente");
+        } else {
+            System.out.println("[✘] Test 2 incorrecto");
+            System.out.println("Al menos un nodo no se ha encontrado en el grafo.");
+        }
+        
+        System.out.println("\nComprobando el funcionamiento del BFS...");
+        
+        // Test 3
+        int res = gp.BFS("rnbqkbnrpppppppp.............................N..PPPPPPPPRNBQKB.R", "................................................................");
+        if (res == -1) {
+            System.out.println("[✔] Test 3 pasado correctamente");
+        } else {
+            System.out.println("[✘] Test 3 incorrecto");
+            System.out.println("Debe comprobarse que ambas representaciones estén en el grafo");
+        }
+        
+        // Test 4
+        int res2 = gp.BFS("rnbqkbnrpppppppp.............................N..PPPPPPPPRNBQKB.R", "rnbqkbnrpppppppp.............................N..PPPPPPPPRNBQKB.R");
+        if (res2 == 0) {
+            System.out.println("[✔] Test 4 pasado correctamente");
+        } else {
+            System.out.println("[✘] Test 4 incorrecto");
+            System.out.println("La distancia entre dos elementos iguales debería ser 0");
+        }
+        
+        // Test 5
+        int res3 = gp.BFS("rnbqkbnrpppppppp.............................N..PPPPPPPPRNBQKB.R", "........Q.pk....K.......r.......Pq.......P.P..n...P.n...........");
+        if (res3 == -1) {
+            System.out.println("[✔] Test 5 pasado correctamente");
+        } else {
+            System.out.println("[✘] Test 5 incorrecto");
+            System.out.println("No debería haberse encontrado camino entre dos nodos");
+        }
+        
+        // Test 6
+        int res4 = gp.BFS("rnbqkbnrpppppppp....................P...........PPPP.PPPRNBQKBNR", "........Q.pk....K.......r.......Pq.......P.P..n...P.n...........");
+        if (res4 == 89) {
+            System.out.println("[✔] Test 6 pasado correctamente");
+        } else {
+            System.out.println("[✘] Test 6 incorrecto");
+            System.out.println("La distancia entre los nodos debería haber sido 89, pero se ha obtenido: " + res4);
+        }
+    }
+}
+```
 
 ### Reto 🌟
 
