@@ -35,3 +35,16 @@ En este punto ya deberíamos poder actualizar el repositorio por el método desc
 Una vez actualizado el código, podremos manualmente hacer los cambios
 
 Si la primera opción falla, siempre podremos repetir el proceso de importación del proyecto y actualizar manualmente los ficheros que hayamos modificado.
+
+
+## Instrucciones generales
+
+Además de utilizar eclipse, hay varias formas de obtener el código:
+
+* Desde un navegador se puede acceder a la URL mostrado. Entonces se puede seleccionar el botón "Code " (en color verde) y descargar el repositorio 
+* Desde un terminal (PowerShell en Windows). Se puede descargar el repositorio con la siguiente orden: `$ git clone https://github.com/adsw-upm/adsw-laboratorios`
+* Hay que asegurar que `git` está instalado.
+* Utilizar aplicaciones disponibles como: 
+    * GitHub for Windows: https://windows.github.com
+    * GitHub for Mac: https://mac.github.com
+    * GitHub for Linux: https://git-scm.com/download/linux
