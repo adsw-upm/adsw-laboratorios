@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class GrafoDirigido {
-	// protected para que se pueda utilizar en las subclases.
+    // protected para que se pueda utilizar en las subclases.
     protected Map<Integer, Set<ArcoDirigido>> enlaces = new HashMap<>();
 
     /**

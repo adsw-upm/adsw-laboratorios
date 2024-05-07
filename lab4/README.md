@@ -113,21 +113,20 @@ A diferencia de la estrategia anterior, en este caso se lanzará una nueva hebra
 El pseudocódigo del algoritmo es el siguiente:
 
 ```
-Inicializar diccionario de caminos óptimos
+Inicializar diccionario de distancias
 Para cada nodo n1 del grafo:
   Lanzar una hebra que:
     Cree un nuevo diccionario local con distancias desde n1
     Para cada nodo n2 del grafo:
       calcule el camino óptimo de n1 a n2 y lo guarde en el diccionario local
 Esperar a que concluyan las hebras
-Actualizar el diccionario global de caminos con los valores locales desde cada origen
+Actualizar el diccionario global de distancias con los valores locales desde cada origen
 ```
 
 Se recomienda crear una clase (p.e., `HebraIndependiente`), que reciba como argumentos los datos necesarios para resolver el problema y guardar los resultados: 
 
 * El grafo original
 * El nodo de origen
-* El nodo de destino
 
 Además, la hebra tendrá que guardar el diccionario local con las distancias desde el origen hacia el resto de nodos.
 
@@ -150,12 +149,12 @@ A diferencia del caso anterior, esta hebra necesitará tener acceso al diccionar
 El algoritmo sería aproximadamente el siguiente:
 
 ```
-Inicializar diccionario de caminos óptimos
+Inicializar diccionario de distancias
 Para cada nodo n1 del grafo:
   Lanzar una hebra que:
     Para cada nodo n2 del grafo:
       Calcule el camino óptimo de n1 a n2
-      Lo guarde en el diccionario de caminos óptimos
+      Lo guarde en el diccionario de distancia
 Esperar a que concluyan las hebras
 ```
 
