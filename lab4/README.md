@@ -215,7 +215,7 @@ Para ahorrar tiempo, se propone la siguiente implementación:
   <summary>Código de la clase `BuscadorOptimizado.java`</summary>
 
 ```java
-package es.upm.dit.adsw.lab3;
+package es.upm.dit.adsw.lab4;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -301,10 +301,6 @@ Es importante tomar un tiempo para reflexionar sobre los aspectos a mejorar en e
 </details>
 
 ## Anexo: Medidas de tiempo
-
-Este resultado es un ejemplo de que el paralelismo no puede solucionar un mal algoritmo.
-Es importante tomar un tiempo para reflexionar sobre los aspectos a mejorar en el código antes de invertir tiempo en paralelizarlo.
-</details>
 
 El siguiente texto permite, aproximadamente, medir el tiempo de ejecución de un segmento de código.  se rodea de llamadas al reloj del sistema y la diferencia es el tiempo que le cuesta hacerlo
 
