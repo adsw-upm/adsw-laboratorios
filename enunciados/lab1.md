@@ -43,7 +43,7 @@ Para almacenar el tablero en el array bidimensional, consideraremos que la posic
 
 </div>
 
-> > [!IMPORTANT]
+> [!IMPORTANT]
 > Una vez se haya implementado el funcionamiento de `matrizPiezas`, se deben crear los métodos `equals` y `hashCode`. Estos métodos deben utilizar la matriz de piezas para comparar dos tableros. Dos tableros serán iguales si todas las piezas de la matriz son iguales. Para el método `hashCode`, se puede utilizar el siguiente código:
 > ```java
 > @Override
