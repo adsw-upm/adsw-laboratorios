@@ -103,7 +103,7 @@ Java cuenta con una interfaz llamada `Comparable` que permite definir un método
 
 Se va a utilizar esta interfaz para poder comparar dos tableros en función de su puntuación. Para ello, la clase `Tablero` debe implementar la interfaz `Comparable` y sobreescribir el método `compareTo`. El método `getPuntuacionBando` que se ha desarrollado en el paso anterior devuelve la puntuación del tablero desde el punto de vista de uno de los bandos; para comparar tableros se utilizará una puntuación general que se calcule como la diferencia entre la puntuación de las blancas y la puntuación de las negras. El método `compareTo` debe utilizar esta puntuación general para comparar dos tableros y decidir cual es el mayor.
 
-El método `compareTo` debe devolver un entero negativo si el tablero que llama al método es mayor que el que se pasa como parámetro, 0 si son iguales y un entero positivo si el tablero que llama al método es peor que el que se pasa como parámetro.
+El método `compareTo` debe devolver un entero positivo si el tablero que llama al método es mayor que el que se pasa como parámetro, 0 si son iguales y un entero negativo si el tablero que llama al método es menor que el que se pasa como parámetro.
 
 ### Pruebas recomendadas
 
