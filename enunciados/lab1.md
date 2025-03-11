@@ -43,7 +43,7 @@ Para almacenar el tablero en el array bidimensional, consideraremos que la posic
 
 </div>
 
-> > [!IMPORTANT]
+> [!IMPORTANT]
 > Una vez se haya implementado el funcionamiento de `matrizPiezas`, se deben crear los métodos `equals` y `hashCode`. Estos métodos deben utilizar la matriz de piezas para comparar dos tableros. Dos tableros serán iguales si todas las piezas de la matriz son iguales. Para el método `hashCode`, se puede utilizar el siguiente código:
 > ```java
 > @Override
@@ -103,7 +103,7 @@ Java cuenta con una interfaz llamada `Comparable` que permite definir un método
 
 Se va a utilizar esta interfaz para poder comparar dos tableros en función de su puntuación. Para ello, la clase `Tablero` debe implementar la interfaz `Comparable` y sobreescribir el método `compareTo`. El método `getPuntuacionBando` que se ha desarrollado en el paso anterior devuelve la puntuación del tablero desde el punto de vista de uno de los bandos; para comparar tableros se utilizará una puntuación general que se calcule como la diferencia entre la puntuación de las blancas y la puntuación de las negras. El método `compareTo` debe utilizar esta puntuación general para comparar dos tableros y decidir cual es el mayor.
 
-El método `compareTo` debe devolver un entero negativo si el tablero que llama al método es mayor que el que se pasa como parámetro, 0 si son iguales y un entero positivo si el tablero que llama al método es peor que el que se pasa como parámetro.
+El método `compareTo` debe devolver un entero positivo si el tablero que llama al método es mayor que el que se pasa como parámetro, 0 si son iguales y un entero negativo si el tablero que llama al método es menor que el que se pasa como parámetro.
 
 ### Pruebas recomendadas
 
