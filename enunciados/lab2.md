@@ -106,7 +106,7 @@ Para comprobar que todo funciona correctamente, podemos modificar el método mai
 
 ```java
 public static void main(String[] args) {
-	LectorPartidas lector = new LectorPartidas("partidas.txt");
+	LectorPartidas lector = new LectorPartidas("data/partidas.txt");
 	Lab2 lab2 = new Lab2(lector);
 	lab2.pintarRanking(10);
 }
