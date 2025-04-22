@@ -21,7 +21,8 @@ Empezaremos creando la clase Lab3.java en la que vamos a trabajar en este labora
 
 Crearemos las estructuras de datos que representarán nuestro grafo de tableros de ajedrez tal y como se indica en el enunciado de la práctica. Si todo sale bien, deberíamos conseguir un grafo con 1217330 nodos y 1226387 aristas. 
 
-> [!TIP]: ¿Por qué son casi iguales el número de nodos y el número de aristas?
+> [!TIP]
+> ¿Por qué son casi iguales el número de nodos y el número de aristas?
 > En el ajedrez, existen un número enorme de posibles movimientos. Utilizando el AnalizadorBasico de la práctica 1, podemos ver que nuestro archivo de datos contiene 1375485 tableros. Si comparamos este resultado con el número de nodos, podemos observar que también son similares, esto quiere decir que la mayoría de los tableros que aparecen en el archivo de datos son únicos o se repiten pocas veces. Si los tableros se repiten poco, es normal que los movimientos que representamos en el grafo también se repitan poco. Un grafo con estas características, es un grafo que se compone de cadenas largas de nodos con pocas interconexiones entre ellas. En los siguientes pasos veremos que este efecto es menos significativo si limitamos el número de movimientos que estudiamos; al principio todas las partidas de ajedrez serán parecidas.
 
 ## Paso 2: Limitar el tamaño del grafo por número de partidas
