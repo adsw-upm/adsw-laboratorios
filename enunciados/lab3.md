@@ -36,7 +36,8 @@ En vez de procesar todas las partidas del archivo, utilizaremos solo las `N` pri
 
 Ahora queremos reducir el tamaño de las partidas que analicemos quedándonos solo con los `M` primeros movimientos de la partida. De forma similar a como hicimos en el paso anterior, debemos modificar el bucle que lee los movimientos de una partida para que solo procese las `M` primeras posiciones. 
 
-> [!IMPORTANT]: `N` y `M` deberían ser variables que podamos modificar.
+> [!IMPORTANT]
+> `N` y `M` deberían ser variables que podamos modificar.
 
 ## Paso 3: Exportar el grafo a un archivo
 
@@ -50,10 +51,9 @@ Vamos a crear un método que se encargue de exportar el grafo a un archivo CSV. 
 private void escribirGrafo(String nombreArchivo) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {
         // escribir la cabecera del archivo CSV
-        writer.write("origen,destino,peso
-");
-
+        writer.write("origen,destino,peso\n");
         // recorrer el grafo y escribir cada arista en el archivo
+    
     } catch (IOException e) {
         e.printStackTrace();
     }
@@ -62,7 +62,6 @@ private void escribirGrafo(String nombreArchivo) {
 
 El archivo resultante debería tener un aspecto similar al siguiente:
 ```csv
-origen,destino,peso
 origen,destino,peso
 -1206575583,1479863969,4
 1288478717,1112418089,1
