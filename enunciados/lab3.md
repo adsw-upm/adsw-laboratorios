@@ -22,10 +22,11 @@ Empezaremos creando la clase Lab3.java en la que vamos a trabajar en este labora
 Crearemos las estructuras de datos que representarán nuestro grafo de tableros de ajedrez tal y como se indica en el enunciado de la práctica. Si todo sale bien, deberíamos conseguir un grafo con 1217330 nodos y 1226387 aristas. 
 
 > [!IMPORTANT]
-> Para poder saber si dos nodos o enlaces son iguales, es necesario que sus clases tengan implementada la función equals y hashcode (la clase `Enlace` ya tiene el equals, pero no el hashcode). 
+> Para poder saber si dos nodos o enlaces son iguales, es necesario que sus clases tengan implementada la función equals y hashcode (la clase `Enlace` ya tiene el equals, pero no el hashcode).
 > Estas funciones se pueden generar automáticamente con el IDE, en eclipse sería: botón derecho > Source > Generate hashCode() and equals().
-> Sin embargo, si lo generamos de esta forma en la clase `Nodo`, veremos que el hashcode de este se calcula mediante el hashcode del enlace, lo que provoca un bucle. 
+> Sin embargo, si lo generamos de esta forma en la clase `Nodo`, veremos que el hashcode de este se calcula mediante el hashcode del enlace, lo que provoca un bucle.
 > Para solucionarlo, el hashcode del Nodo debe calcularse sin tener en cuenta el hash del enlace.
+> Es **muy importante** que la función hashCode() de la clase `Enlace` no utilice el `peso` para su cálculo.
 
 
 > [!TIP]
