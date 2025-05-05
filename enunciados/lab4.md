@@ -100,7 +100,7 @@ public List<List<Nodo>> iniciarBusqueda(Tablero T1, Tablero T2) throws Interrupt
 }
 ```
 
-> [!ERROR] 
+> [!CAUTION] 
 > Cuidado con los interbloqueos. Puede ser que no se encuentre ningún camino entre los tableros y que la hebra que se queda esperando los resultados no se despierte nunca. Para evitar esto, deberíamos implementar algún mecanismo que nos permita saber cuantas hebras están resolviendo tareas, y si en algún momento no hay ninguna, despertar a la hebra principal que espera los resultados.
 
 2. **Procesar las tareas**:
