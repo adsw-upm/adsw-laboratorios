@@ -199,7 +199,7 @@ Para ello, debes implementar la clase:
 En el paquete:
 
 ```
-es.upm.dit.adsw.cifrasyletras.letras
+main.java.es.upm.dit.adsw.cifrasyletras.letras
 ```
 
 Esta clase debe implementar la interfaz `Letras`. Cuando el juego genera una prueba de letras, mostrará por consola un conjunto de letras disponibles (por ejemplo `aertlosmi`) y, a continuación, invocará el método:
@@ -220,19 +220,19 @@ El método debe limitarse a leer y devolver la palabra introducida manualmente p
 ### Código parcial de la tarea:
 
 ```java
-package es.upm.dit.adsw.cifrasyletras.letras;
+package main.java.es.upm.dit.adsw.cifrasyletras.letras;
 
 import java.util.Scanner;
 
 public class LetrasHumano implements Letras {
 
-    private Scanner sc;
+   private Scanner sc;
 
-    public LetrasHumano(Scanner sc) {
-        this.sc = sc;
-    }
+   public LetrasHumano(Scanner sc) {
+      this.sc = sc;
+   }
 
-    // Código a implementar
+   // Código a implementar
 }
 ```
 
@@ -249,7 +249,7 @@ Para ello, debes implementar la clase:
 En el paquete:
 
 ```
-es.upm.dit.adsw.cifrasyletras.cifras
+main.java.es.upm.dit.adsw.cifrasyletras.cifras
 ```
 
 Esta clase debe implementar la interfaz `Cifras`. Cuando el juego genera una prueba de cifras, mostrará por consola:
@@ -276,20 +276,19 @@ El jugador humano será quien escriba la expresión manualmente (por ejemplo: 95
 ### Código parcial de la tarea:
 
 ```java
-package es.upm.dit.adsw.cifrasyletras.cifras;
+package main.java.es.upm.dit.adsw.cifrasyletras.cifras;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class CifrasHumano implements Cifras {
 
-    private Scanner sc;
+   private Scanner sc;
 
-    public CifrasHumano(Scanner sc) {
-        this.sc = sc;
-    }
+   public CifrasHumano(Scanner sc) {
+      this.sc = sc;
+   }
 
-    // Código a implementar
+   // Código a implementar
 }
 ```
 
@@ -374,24 +373,24 @@ Una palabra se considera válida si cumple las dos condiciones siguientes:
 Crea la clase `ValidadorLetras` en el paquete `juego`:
 
 ```java
-package es.upm.dit.adsw.cifrasyletras.juego;
+package main.java.es.upm.dit.adsw.cifrasyletras.juego;
 
 public class ValidadorLetras {
 
-    // El listado de palabras válidas ya se carga en el constructor. No es necesario modificarlo.
-    public ValidadorLetras(String rutaDiccionario) {
-        // ...
-    }
+   // El listado de palabras válidas ya se carga en el constructor. No es necesario modificarlo.
+   public ValidadorLetras(String rutaDiccionario) {
+      // ...
+   }
 
-    // Código a implementar
-    public boolean esValida(String palabra, String letras) {
-        // A implementar
-    }
+   // Código a implementar
+   public boolean esValida(String palabra, String letras) {
+      // A implementar
+   }
 
-    // Se usa para normalizar palabras.
-    public String limpiarPalabra(String palabra) {
-        // ...
-    }
+   // Se usa para normalizar palabras.
+   public String limpiarPalabra(String palabra) {
+      // ...
+   }
 }
 ```
 
@@ -456,50 +455,50 @@ Una expresión se considera válida si cumple todas las condiciones siguientes:
 Crea la clase `ValidadorCifras` en el paquete `juego`:
 
 ```java
-package es.upm.dit.adsw.cifrasyletras.juego;
+package main.java.es.upm.dit.adsw.cifrasyletras.juego;
 
 import java.util.List;
 
 public class ValidadorCifras {
 
-    // Método auxiliar para comprobar números usados
-    public boolean numerosUsadosValidos(String expresion, List<Integer> numerosDisponibles) {
+   // Método auxiliar para comprobar números usados
+   public boolean numerosUsadosValidos(String expresion, List<Integer> numerosDisponibles) {
       List<Integer> numerosSinUsar = new ArrayList<>(numerosDisponibles);
       String[] tokens = expresion.split(" ");
-      for(int i = 0; i < tokens.length; i+=2 ) {
-        try {
-          Integer n = Integer.parseInt(tokens[i]);
-          if ( !numerosSinUsar.remove(n) ) {
-            System.out.println("Número no disponible: " + n);
+      for (int i = 0; i < tokens.length; i += 2) {
+         try {
+            Integer n = Integer.parseInt(tokens[i]);
+            if (!numerosSinUsar.remove(n)) {
+               System.out.println("Número no disponible: " + n);
+               return false;
+            }
+         } catch (NumberFormatException e) {
+            System.out.println("Token no es un número: " + tokens[i]);
             return false;
-          }
-        } catch (NumberFormatException e) {
-          System.out.println("Token no es un número: " + tokens[i]);
-          return false;
-        }
+         }
       }
       return true;
-    }
+   }
 
-    // Código a implementar
-    public boolean esValida(String expresion, List<Integer> numerosDisponibles) {
-        String[] partes = expresion.split(" = ");
-    
-        int resultado =  0;
-        try {
-          resultado = Integer.parseInt(partes[0]);
-        } catch (NumberFormatException e) {
-          System.out.println("Resultado no es un número: " + partes[0]);
-          return false;
-        }
-    
-        if ( !numerosUsadosValidos(partes[1], numerosDisponibles) ) {
-          return false;
-        }
-    
-        String[] tokens = partes[1].split(" ");
-        // A implementar: Calcular la expresión (tokens) e ir comprobando sus restricciones
-    }
+   // Código a implementar
+   public boolean esValida(String expresion, List<Integer> numerosDisponibles) {
+      String[] partes = expresion.split(" = ");
+
+      int resultado = 0;
+      try {
+         resultado = Integer.parseInt(partes[0]);
+      } catch (NumberFormatException e) {
+         System.out.println("Resultado no es un número: " + partes[0]);
+         return false;
+      }
+
+      if (!numerosUsadosValidos(partes[1], numerosDisponibles)) {
+         return false;
+      }
+
+      String[] tokens = partes[1].split(" ");
+      // A implementar: Calcular la expresión (tokens) e ir comprobando sus restricciones
+   }
 }
 ```
 

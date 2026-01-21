@@ -1,1 +1,16 @@
+# IDEs
 .idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# Maven / Java build
+target/
+out/
+bin/
+*.class
+
+# OS
+.DS_Store

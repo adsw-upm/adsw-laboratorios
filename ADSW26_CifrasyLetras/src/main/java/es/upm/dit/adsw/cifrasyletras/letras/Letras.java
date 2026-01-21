@@ -1,4 +1,4 @@
-package es.upm.dit.adsw.cifrasyletras.letras;
+package main.java.es.upm.dit.adsw.cifrasyletras.letras;
 
 public interface Letras {
     /**

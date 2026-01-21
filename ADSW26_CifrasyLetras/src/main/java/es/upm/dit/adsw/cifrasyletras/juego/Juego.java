@@ -1,15 +1,15 @@
-package es.upm.dit.adsw.cifrasyletras.juego;
+package main.java.es.upm.dit.adsw.cifrasyletras.juego;
 
-import es.upm.dit.adsw.cifrasyletras.letras.Letras;
-import es.upm.dit.adsw.cifrasyletras.letras.LetrasHumano;
+import main.java.es.upm.dit.adsw.cifrasyletras.letras.Letras;
+import main.java.es.upm.dit.adsw.cifrasyletras.letras.LetrasHumano;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import es.upm.dit.adsw.cifrasyletras.cifras.Cifras;
-import es.upm.dit.adsw.cifrasyletras.cifras.CifrasHumano;
+import main.java.es.upm.dit.adsw.cifrasyletras.cifras.Cifras;
+import main.java.es.upm.dit.adsw.cifrasyletras.cifras.CifrasHumano;
 
 public class Juego {
 
@@ -38,7 +38,7 @@ public class Juego {
         this.jugadorLetras = jugadorLetras;
         this.jugadorCifras = jugadorCifras;
         validadorCifras = new ValidadorCifras();
-        validadorLetras = new ValidadorLetras("2026/practica-base/data/es.txt");
+        validadorLetras = new ValidadorLetras("ADSW26_CifrasyLetras/data/es.txt");
     }
 
     public void jugar() {
