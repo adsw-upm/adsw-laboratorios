@@ -1,15 +1,15 @@
-package main.java.es.upm.dit.adsw.cifrasyletras.juego;
+package es.upm.dit.adsw.cifrasyletras.juego;
 
-import main.java.es.upm.dit.adsw.cifrasyletras.letras.Letras;
-import main.java.es.upm.dit.adsw.cifrasyletras.letras.LetrasHumano;
+import es.upm.dit.adsw.cifrasyletras.letras.Letras;
+import es.upm.dit.adsw.cifrasyletras.letras.LetrasHumano;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import main.java.es.upm.dit.adsw.cifrasyletras.cifras.Cifras;
-import main.java.es.upm.dit.adsw.cifrasyletras.cifras.CifrasHumano;
+import es.upm.dit.adsw.cifrasyletras.cifras.Cifras;
+import es.upm.dit.adsw.cifrasyletras.cifras.CifrasHumano;
 
 public class Juego {
 
@@ -38,7 +38,7 @@ public class Juego {
         this.jugadorLetras = jugadorLetras;
         this.jugadorCifras = jugadorCifras;
         validadorCifras = new ValidadorCifras();
-        validadorLetras = new ValidadorLetras("ADSW26_CifrasyLetras/data/es.txt");
+        validadorLetras = new ValidadorLetras("data/es.txt");
     }
 
     public void jugar() {
