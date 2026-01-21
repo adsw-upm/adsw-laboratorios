@@ -1,0 +1,563 @@
+# ADSW Laboratorio 0: Introducción
+
+En este laboratorio introductorio veremos las clases y datos básicos que utilizaremos durante el resto de laboratorios y prácticas.
+
+Este año vamos a recrear el programa de televisión *Cifras y Letras*, que consta de dos pruebas principales: la prueba de Letras y la prueba de Cifras.
+
+## Prueba de Letras
+
+En la prueba de letras, el concursante recibe un conjunto de letras y debe intentar formar la palabra válida en español más larga posible, utilizando únicamente dichas letras.
+
+Por ejemplo, el concursante recibe el siguiente conjunto de letras:
+
+```
+a  e  r  t  l  o  s  m  i
+```
+
+Una posible solución sería `realismos`, que emplea las 9 letras disponibles.
+Otra solución válida sería `realismo` (8 letras), que es peor al tener menor longitud.
+También sería válida `morales` (7 letras).
+
+### Reglas:
+* Cada letra del conjunto inicial solo puede utilizarse una vez, salvo que dicha letra aparezca repetida en el conjunto inicial.
+  Por ejemplo, si el conjunto contiene una sola letra `e`, no es válido formar una palabra que contenga dos letras `e`.
+* No es obligatorio utilizar todas las letras del conjunto, pero cuantas más, mejor.
+* La palabra formada debe existir en español y aparecer en el listado de palabras válidas.
+* No se permiten nombres propios.
+* En caso de existir varias palabras con la misma longitud, cualquiera de ellas se considera una solución correcta.
+
+---
+
+## Prueba de Cifras
+
+En la prueba de cifras, el concursante recibe un conjunto de números y un número objetivo, y debe intentar obtener dicho número objetivo mediante operaciones aritméticas básicas.
+
+Por ejemplo, el concursante recibe los siguientes números:
+
+```
+25 50 75 3 6 8
+```
+
+Y como número objetivo:
+
+```
+952
+```
+
+El concursante debe combinar los números disponibles aplicando operaciones matemáticas para intentar llegar exactamente (o lo más cercano posible; por arriba o por abajo) al número objetivo.
+
+### Simplificación para esta prueba
+
+En el programa original, las operaciones pueden incluir paréntesis y respetan las prioridades habituales de los operadores.
+
+**En este laboratorio introductorio, para simplificar el problema, se adopta una regla más sencilla:**
+
+> Las operaciones se realizan **siempre de dos en dos y de izquierda a derecha**, sin tener en cuenta prioridades entre operadores.
+
+Esto significa que la expresión se evalúa paso a paso, aplicando cada operación sobre el resultado anterior y el siguiente número disponible.
+
+Por ejemplo, dada la siguiente secuencia de operaciones:
+
+```
+50 + 75 − 6 × 8
+```
+
+La evaluación en este laboratorio se realiza así:
+
+```
+50 + 75 = 125
+125 − 6 = 119
+119 × 8 = 952
+```
+
+Es decir, **no se interpreta como una expresión matemática estándar**, sino como operaciones encadenadas evaluadas estrictamente de izquierda a derecha.
+
+> [!CAUTION]
+> En esta prueba **no se permiten resultados intermedios negativos ni decimales**.  
+> En particular, una división solo es válida si el resultado es **entero exacto** (sin parte decimal).
+
+### Reglas
+* Cada número del conjunto inicial solo puede utilizarse una vez.
+* En cada paso se aplicará una operación entre el resultado actual y uno de los números restantes.
+* Solo se permiten las operaciones básicas: suma (`+`), resta (`-`), multiplicación (`×`) y división (`÷`).
+* La división solo está permitida si el resultado es un número entero.
+* No se permiten resultados intermedios negativos.
+* No es obligatorio utilizar todos los números del conjunto.
+* Gana quien obtenga exactamente el número objetivo.
+* En caso de no poder obtenerse exactamente, se considera mejor la solución cuyo resultado final esté más cercano al número objetivo.
+
+---
+
+## Importar el Proyecto en Eclipse
+
+La manera más sencilla de descargar este código es clonarlo o importarlo en el entorno de desarrollo.
+También es posible importar el fichero `.zip` para cada laboratorio disponible en GitHub seleccionando el botón "Code" (en color verde) y haciendo clic en descargar el repositorio .
+
+### Primera descarga
+
+Los proyectos de los laboratorios se pueden importar mediante la función: `File -> Import -> Projects from Git (with smart import) -> Clone URI`.
+
+En el campo `URI` introducimos: https://github.com/adsw-upm/adsw-laboratorios
+
+Al hacerlo, deberían haberse rellenado los siguientes campos automáticamente:
+
+- En el campo `Host` introducimos: `github.com`
+- En el campo `Repository path` introducimos: `/adsw-upm/adsw-laboratorios.git`
+- El campo `protocol` debe estar seleccionado a `https`
+
+Tras esto, hacemos clic en `Next` **tres veces**, hasta que aparezca la siguiente ventana:
+
+![Pantalla importación proyecto](data/GitProjectImport.png)
+
+Debemos asegurarnos de marcar **SÓLO** la opción de adsw-laboratorios/ADSW26_CifrasyLetras.
+
+Entonces hacemos clic en `Finish`. El proyecto deberá importarse correctamente. Aunque todo se haya hecho bien, aparecerá
+un error en la clase `Juego.java`. Esto es normal, se resolverá al resolver las tareas 2 y 3 de este laboratorio.
+
+### Actualización
+
+Para actualizar los enunciados, se puede actualizar el código pulsando con botón derecho en el proyecto general (`adsw-laboratorios`) `-> Team -> Pull`.
+Es aconsejable refrescar los ficheros en eclipse previamente `F5` o mediante `Botón derecho -> Refresh` en el repositorio principal.
+
+También pueden verse todos los repositorios disponibles en Eclipse mostrando la vista de repositorios en el menú: `Window -> Show View -> Others... -> Git Repositories`
+
+---
+
+## Estructura del laboratorio
+
+El código del laboratorio se organiza en varios paquetes, siguiendo una estructura que separa cada una de las pruebas del juego.
+
+### Lista de palabras
+
+Disponemos de un listado completo de palabras válidas que existen en español. Este se encuentra en:
+
+```
+data/es.txt
+```
+
+Este fichero se utiliza en la prueba de Letras para comprobar si una palabra existe en español.  
+No es necesario modificar este archivo.
+
+---
+
+### Paquetes principales
+
+El código fuente se organiza en tres bloques principales:
+
+- `cifras`: clases relacionadas con la prueba de Cifras.
+- `letras`: clases relacionadas con la prueba de Letras.
+- `juego`: lógica general del juego y validadores de las pruebas.
+
+---
+
+### Prueba de Letras
+
+En el paquete `letras` se define la interfaz `Letras`, que especifica el comportamiento que debe implementar cualquier jugador de la prueba de letras.
+
+```java
+public interface Letras {
+
+    /**
+     * Obtener la palabra más larga que pueda formarse con ese conjunto de letras.
+     * Ejemplo:
+     *  ttrosanco -> contratos
+     *
+     * @param letras conjunto de letras disponibles
+     * @return palabra más larga encontrada
+     */
+    public String obtenerPalabra(String letras);
+
+}
+```
+
+Las clases que implementan esta interfaz deben proporcionar una implementación concreta del método `obtenerPalabra`.
+
+### Prueba de Cifras
+
+De forma análoga, en el paquete `cifras` se define la interfaz `Cifras`, que especifica el comportamiento de un jugador en la prueba de cifras.
+
+```java
+public interface Cifras {
+
+    public static final char[] OPERADORES = new char[] {'+', '-', '*', '/'};
+
+    /**
+     * Obtener una cifra que se aproxime al objetivo usando los números dados.
+     * El resultado es una expresión en forma de cadena que, al evaluarse,
+     * produce la cifra obtenida.
+     *
+     * Ejemplo:
+     *  603 = 3 + 6 * 100
+     *
+     * @param objetivo número objetivo
+     * @param numeros números disponibles
+     * @return expresión que produce el resultado
+     */
+    public String obtenerCifra(int objetivo, List<Integer> numeros);
+}
+```
+
+Las clases que implementan esta interfaz deben proporcionar una implementación concreta del método `obtenerCifra`.
+
+---
+
+## Tarea 1: Implementar la clase `LetrasHumano` (añadir metodos)
+
+En esta primera tarea el objetivo es permitir que un **jugador humano** pueda participar en la prueba de Letras introduciendo su respuesta por consola.
+
+Para ello, debes implementar la clase:
+
+- `LetrasHumano`
+
+En el paquete:
+
+```
+es.upm.dit.adsw.cifrasyletras.letras
+```
+
+Esta clase debe implementar la interfaz `Letras`. Cuando el juego genera una prueba de letras, mostrará por consola un conjunto de letras disponibles (por ejemplo `aertlosmi`) y, a continuación, invocará el método:
+
+```java
+String palabra = jugadorLetras.obtenerPalabra(letras);
+```
+
+Tu implementación del método `obtenerPalabra` debe:
+
+1. Leer la línea completa introducida por el usuario (usando el método `nextLine()`).
+2. Eliminar los espacios iniciales y finales (usando el método `trim()`).
+3. Devolver la palabra introducida.
+
+En esta tarea no se pide resolver la prueba automáticamente.
+El método debe limitarse a leer y devolver la palabra introducida manualmente por el usuario.
+
+### Código parcial de la tarea:
+
+```java
+package es.upm.dit.adsw.cifrasyletras.letras;
+
+import java.util.Scanner;
+
+public class LetrasHumano implements Letras {
+
+    private Scanner sc;
+
+    public LetrasHumano(Scanner sc) {
+        this.sc = sc;
+    }
+
+    // Código a implementar
+}
+```
+
+La clase `Scanner` nos permite manejar la entrada por consola, para poder recibir la palabra que el jugador introduzca.
+
+## Tarea 2: Implementar la clase `CifrasHumano`
+
+En esta segunda tarea el objetivo es permitir que un **jugador humano** pueda participar en la prueba de Cifras introduciendo su respuesta por consola.
+
+Para ello, debes implementar la clase:
+
+- `CifrasHumano`
+
+En el paquete:
+
+```
+es.upm.dit.adsw.cifrasyletras.cifras
+```
+
+Esta clase debe implementar la interfaz `Cifras`. Cuando el juego genera una prueba de cifras, mostrará por consola:
+
+- la lista de números disponibles (por ejemplo `25 50 75 3 6 8`)
+- el objetivo (por ejemplo `952`)
+
+y, a continuación, invocará el método:
+
+```java
+String expresion = jugadorCifras.obtenerCifra(objetivo, numeros);
+```
+
+Tu implementación del método `obtenerCifra` debe:
+
+1. Leer la línea completa introducida por el usuario (usando el método `nextLine()`).
+2. Eliminar los espacios iniciales y finales (usando el método `trim()`).
+3. Devolver la expresión introducida como una cadena.
+
+En esta tarea no se pide resolver la prueba automáticamente ni construir la expresión a partir de los números.
+El método debe limitarse a leer y devolver la expresión escrita por el usuario.
+El jugador humano será quien escriba la expresión manualmente (por ejemplo: 952 = 50 + 75 - 6 * 8).
+
+### Código parcial de la tarea:
+
+```java
+package es.upm.dit.adsw.cifrasyletras.cifras;
+
+import java.util.List;
+import java.util.Scanner;
+
+public class CifrasHumano implements Cifras {
+
+    private Scanner sc;
+
+    public CifrasHumano(Scanner sc) {
+        this.sc = sc;
+    }
+
+    // Código a implementar
+}
+```
+
+La clase `Scanner` nos permite manejar la entrada por consola, para poder recibir la expresión que el jugador introduzca.
+
+---
+
+## Tarea 3: Entender la clase `Juego`
+
+En esta tarea no tienes que programar nada.  
+El objetivo es entender **cómo funciona el flujo del juego** y cómo se integran las clases que has implementado.
+
+La clase `Juego` es el punto central del programa. Se encarga de:
+- generar las pruebas de letras y cifras,
+- pedir una respuesta al jugador,
+- y validar dicha respuesta.
+
+---
+
+### Flujo general del juego
+
+1. El programa comienza en el método `main`.
+2. Se crean dos jugadores humanos:
+- `LetrasHumano` para la prueba de letras.
+- `CifrasHumano` para la prueba de cifras.
+3. Se llama al método `jugar()`.
+
+---
+
+### Qué ocurre en una prueba de Letras
+
+Para cada prueba de letras:
+1. Se generan 9 letras aleatorias.
+2. Se muestran por consola.
+3. Se pide al jugador una palabra llamando a:
+  ```java
+        jugadorLetras.obtenerPalabra(letras);
+  ```
+4. La palabra introducida por consola se valida con `ValidadorLetras`.
+5. Se indica si la palabra es válida o no.
+
+Tu clase `LetrasHumano` solo lee la palabra. La validación se realiza con el método `esValida()` de la clase `ValidadorLetras`.
+
+### Qué ocurre en una prueba de Cifras
+
+Para cada prueba de cifras:
+1. Se generan 6 números y un objetivo.
+2. Se muestran por consola.
+3. Se pide al jugador una expresión llamando a:
+  ```java
+        jugadorCifras.obtenerCifra(objetivo, numeros);
+  ```
+4. La expresión introducida por consola se valida con `ValidadorCifras`.
+5. Se indica si la solución es válida o no.
+
+Tu clase `CifrasHumano` solo lee la expresión. La validación se realiza con el método `esValida()` de la clase `ValidadorCifras`.
+
+---
+
+## Tarea 4: Implementar `esValida()` en `ValidadorLetras`
+
+En esta tarea vas a implementar la validación de una palabra en la prueba de Letras.
+
+El juego llamará a este método después de que el jugador introduzca una palabra por consola:
+
+```java
+validadorLetras.esValida(palabra, letras);
+```
+
+El método debe devolver `true` si la palabra es válida y `false` en caso contrario.
+
+### Qué significa que la palabra sea válida
+
+Una palabra se considera válida si cumple las dos condiciones siguientes:
+1. Solo utiliza letras disponibles en el conjunto letras (respetando repeticiones).
+    - Si la palabra contiene alguna letra que no se proporcionó (o la usa más veces de las permitidas), la palabra no es válida.
+2. Existe en el listado de palabras válidas (fichero `data/es.txt`).
+    - La palabra se comprobará en un conjunto (`Set`) de palabras válidas cargado al iniciar el validador.
+
+### Código parcial de la tarea:
+
+Crea la clase `ValidadorLetras` en el paquete `juego`:
+
+```java
+package es.upm.dit.adsw.cifrasyletras.juego;
+
+public class ValidadorLetras {
+
+    // El listado de palabras válidas ya se carga en el constructor. No es necesario modificarlo.
+    public ValidadorLetras(String rutaDiccionario) {
+        // ...
+    }
+
+    // Código a implementar
+    public boolean esValida(String palabra, String letras) {
+        // A implementar
+    }
+
+    // Se usa para normalizar palabras.
+    public String limpiarPalabra(String palabra) {
+        // ...
+    }
+}
+```
+
+### Pistas para la implementación
+
+1. Convierte letras a una lista de `Character`.
+2. Recorre la palabra carácter a carácter e intenta "consumir" cada letra eliminándola de la lista (método `remove()`):
+    - si no puedes eliminar una letra, este método devuelve `false`.
+3. Si todas las letras se han podido consumir, comprueba si la palabra normalizada (resultado de llamar a `limpiarPalabra(palabra)` está en el Set de palabras válidas.
+
+---
+
+## Tarea 5: Implementar `esValida()` en `ValidadorCifras`
+
+En esta tarea vas a implementar la validación de una expresión en la prueba de Cifras.
+
+El juego llamará a este método después de que el jugador introduzca una expresión por consola:
+
+```java
+validadorCifras.esValida(expresion, numeros);
+```
+
+El método debe devolver `true` si la expresión es válida y `false` en caso contrario.
+
+### Formato esperado de la expresión
+
+La expresión que introduce el jugador debe tener el siguiente formato:
+
+```
+<resultado> = <número> <operador> <número> <operador> <número> ...
+```
+
+Ejemplo:
+
+```
+952 = 50 + 75 - 6 * 8
+```
+
+> [!IMPORTANT]
+> La expresión debe estar separada por espacios exactamente como se muestra:
+> - los números y operadores van separados por un espacio,
+> - el símbolo `=` debe ir con espacios a ambos lados: " = ".
+
+### Qué significa que la expresión sea válida
+
+Una expresión se considera válida si cumple todas las condiciones siguientes:
+
+1. El resultado a la izquierda del `=` es un número entero.
+2. Los números utilizados a la derecha del `=` están disponibles en la lista `numerosDisponibles`.
+    - Cada número disponible solo puede usarse una vez.
+    - Si se usa un número que no está disponible (o se repite más veces de lo permitido), la expresión no es válida.
+3. La expresión puede evaluarse de izquierda a derecha, aplicando operaciones de dos en dos.
+4. Solo se permiten los operadores: `+`, `-`, `*`, `/`.
+5. No se permiten resultados intermedios negativos.
+6. Las divisiones solo son válidas si el resultado es entero exacto.
+    - No se permiten divisiones con resto.
+    - No se permite dividir entre 0.
+7. El resultado calculado al evaluar la parte derecha debe coincidir exactamente con el resultado indicado a la izquierda del `=`.
+
+### Código parcial de la tarea:
+
+Crea la clase `ValidadorCifras` en el paquete `juego`:
+
+```java
+package es.upm.dit.adsw.cifrasyletras.juego;
+
+import java.util.List;
+
+public class ValidadorCifras {
+
+    // Método auxiliar para comprobar números usados
+    public boolean numerosUsadosValidos(String expresion, List<Integer> numerosDisponibles) {
+      List<Integer> numerosSinUsar = new ArrayList<>(numerosDisponibles);
+      String[] tokens = expresion.split(" ");
+      for(int i = 0; i < tokens.length; i+=2 ) {
+        try {
+          Integer n = Integer.parseInt(tokens[i]);
+          if ( !numerosSinUsar.remove(n) ) {
+            System.out.println("Número no disponible: " + n);
+            return false;
+          }
+        } catch (NumberFormatException e) {
+          System.out.println("Token no es un número: " + tokens[i]);
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // Código a implementar
+    public boolean esValida(String expresion, List<Integer> numerosDisponibles) {
+        String[] partes = expresion.split(" = ");
+    
+        int resultado =  0;
+        try {
+          resultado = Integer.parseInt(partes[0]);
+        } catch (NumberFormatException e) {
+          System.out.println("Resultado no es un número: " + partes[0]);
+          return false;
+        }
+    
+        if ( !numerosUsadosValidos(partes[1], numerosDisponibles) ) {
+          return false;
+        }
+    
+        String[] tokens = partes[1].split(" ");
+        // A implementar: Calcular la expresión (tokens) e ir comprobando sus restricciones
+    }
+}
+```
+
+### Pistas para la implementación:
+
+Parte de la validación ya está implementada. En `esValida()` te falta:
+
+1. Inicializar el resultado calculado con el **primer número** de la expresión.
+2. Recorrer el resto de tokens de dos en dos:
+- token impar → operador
+- token par → siguiente número
+3. Aplicar la operación correspondiente al resultado acumulado.
+4. En cada operación, comprobar las restricciones:
+- no resultados negativos,
+- divisiones enteras exactas.
+5. Al final, comprobar que el resultado calculado coincide con el resultado indicado a la izquierda del `=`.
+
+Si alguna comprobación falla, devuelve `false`.
+
+> [!TIP]
+> Para convertir un String a número entero, puedes usar: `Integer.parseInt()` pasándole como parámetro el String.
+>
+> Si quieres convertir un char a un String, puedes utilizar `String.valueOf()` pasándole como parámetro el char.
+
+---
+
+## Tarea 6: Crear un test unitario (JUnit)
+
+En esta tarea debes escribir **un test unitario** para comprobar que parte de la validación funciona correctamente.
+
+Crea una clase de test llamada `ValidadorCifrasTest` en el paquete `tests` y escribe un método que:
+1. Construya un objeto `ValidadorCifras`.
+2. Cree una lista de números disponibles.
+3. Llame a `esValida(...)`.
+4. Compruebe el resultado con `assertTrue(...)` o `assertFalse(...)`.
+
+### Nota sobre los tests
+
+Para que un método se ejecute como test:
+- debe ir anotado con `@Test` (ubicado encima del método),
+- y no debe devolver ningún valor (`void`).
+
+### Caso recomendado
+
+Comprueba que la siguiente expresión es válida:
+
+- Números: `25 50 75 3 6 8`
+- Expresión: `952 = 50 + 75 - 6 * 8`  
