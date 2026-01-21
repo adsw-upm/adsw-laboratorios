@@ -48,7 +48,7 @@ El concursante debe combinar los números disponibles aplicando operaciones mate
 
 ### Simplificación para esta prueba
 
-En el programa original, las operaciones pueden incluir paréntesis y respetan las prioridades habituales de los operadores.  
+En el programa original, las operaciones pueden incluir paréntesis y respetan las prioridades habituales de los operadores.
 
 **En este laboratorio introductorio, para simplificar el problema, se adopta una regla más sencilla:**
 
@@ -95,11 +95,24 @@ También es posible importar el fichero `.zip` para cada laboratorio disponible 
 
 ### Primera descarga
 
-Los proyectos de los laboratorios se pueden importar mediante la función: `File -> Import -> Projects from Git (with smart import)`.
-Nos pedirá la URL de este repositorio: https://github.com/adsw-upm/adsw-laboratorios
+Los proyectos de los laboratorios se pueden importar mediante la función: `File -> Import -> Projects from Git (with smart import) -> Clone URI`.
 
-Eclipse automáticamente descargará el repositorio en una carpeta que le especifiquemos, y procederá a buscar sub-proyectos en esa carpeta para importar
-En ese punto, se pueden importar todos los proyectos e incluir la carpeta raíz también (`adsw-laboratorios`).
+En el campo `URI` introducimos: https://github.com/adsw-upm/adsw-laboratorios
+
+Al hacerlo, deberían haberse rellenado los siguientes campos automáticamente:
+
+- En el campo `Host` introducimos: `github.com`
+- En el campo `Repository path` introducimos: `/adsw-upm/adsw-laboratorios.git`
+- El campo `protocol` debe estar seleccionado a `https`
+
+Tras esto, hacemos clic en `Next` **tres veces**, hasta que aparezca la siguiente ventana:
+
+![Pantalla importación proyecto](data/GitProjectImport.png)
+
+Debemos asegurarnos de marcar **SÓLO** la opción de adsw-laboratorios/ADSW26_CifrasyLetras.
+
+Entonces hacemos clic en `Finish`. El proyecto deberá importarse correctamente. Aunque todo se haya hecho bien, aparecerá
+un error en la clase `Juego.java`. Esto es normal, se resolverá al resolver las tareas 2 y 3 de este laboratorio.
 
 ### Actualización
 
@@ -199,7 +212,7 @@ Para ello, debes implementar la clase:
 En el paquete:
 
 ```
-main.java.es.upm.dit.adsw.cifrasyletras.letras
+es.upm.dit.adsw.cifrasyletras.letras
 ```
 
 Esta clase debe implementar la interfaz `Letras`. Cuando el juego genera una prueba de letras, mostrará por consola un conjunto de letras disponibles (por ejemplo `aertlosmi`) y, a continuación, invocará el método:
@@ -220,19 +233,19 @@ El método debe limitarse a leer y devolver la palabra introducida manualmente p
 ### Código parcial de la tarea:
 
 ```java
-package main.java.es.upm.dit.adsw.cifrasyletras.letras;
+package es.upm.dit.adsw.cifrasyletras.letras;
 
 import java.util.Scanner;
 
 public class LetrasHumano implements Letras {
 
-   private Scanner sc;
+    private Scanner sc;
 
-   public LetrasHumano(Scanner sc) {
-      this.sc = sc;
-   }
+    public LetrasHumano(Scanner sc) {
+        this.sc = sc;
+    }
 
-   // Código a implementar
+    // Código a implementar
 }
 ```
 
@@ -249,7 +262,7 @@ Para ello, debes implementar la clase:
 En el paquete:
 
 ```
-main.java.es.upm.dit.adsw.cifrasyletras.cifras
+es.upm.dit.adsw.cifrasyletras.cifras
 ```
 
 Esta clase debe implementar la interfaz `Cifras`. Cuando el juego genera una prueba de cifras, mostrará por consola:
@@ -276,19 +289,20 @@ El jugador humano será quien escriba la expresión manualmente (por ejemplo: 95
 ### Código parcial de la tarea:
 
 ```java
-package main.java.es.upm.dit.adsw.cifrasyletras.cifras;
+package es.upm.dit.adsw.cifrasyletras.cifras;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class CifrasHumano implements Cifras {
 
-   private Scanner sc;
+    private Scanner sc;
 
-   public CifrasHumano(Scanner sc) {
-      this.sc = sc;
-   }
+    public CifrasHumano(Scanner sc) {
+        this.sc = sc;
+    }
 
-   // Código a implementar
+    // Código a implementar
 }
 ```
 
@@ -312,8 +326,8 @@ La clase `Juego` es el punto central del programa. Se encarga de:
 
 1. El programa comienza en el método `main`.
 2. Se crean dos jugadores humanos:
-  - `LetrasHumano` para la prueba de letras.
-  - `CifrasHumano` para la prueba de cifras.
+- `LetrasHumano` para la prueba de letras.
+- `CifrasHumano` para la prueba de cifras.
 3. Se llama al método `jugar()`.
 
 ---
@@ -363,42 +377,42 @@ El método debe devolver `true` si la palabra es válida y `false` en caso contr
 ### Qué significa que la palabra sea válida
 
 Una palabra se considera válida si cumple las dos condiciones siguientes:
-1. Solo utiliza letras disponibles en el conjunto letras (respetando repeticiones). 
-   - Si la palabra contiene alguna letra que no se proporcionó (o la usa más veces de las permitidas), la palabra no es válida.
+1. Solo utiliza letras disponibles en el conjunto letras (respetando repeticiones).
+    - Si la palabra contiene alguna letra que no se proporcionó (o la usa más veces de las permitidas), la palabra no es válida.
 2. Existe en el listado de palabras válidas (fichero `data/es.txt`).
-   - La palabra se comprobará en un conjunto (`Set`) de palabras válidas cargado al iniciar el validador.
+    - La palabra se comprobará en un conjunto (`Set`) de palabras válidas cargado al iniciar el validador.
 
 ### Código parcial de la tarea:
 
 Crea la clase `ValidadorLetras` en el paquete `juego`:
 
 ```java
-package main.java.es.upm.dit.adsw.cifrasyletras.juego;
+package es.upm.dit.adsw.cifrasyletras.juego;
 
 public class ValidadorLetras {
 
-   // El listado de palabras válidas ya se carga en el constructor. No es necesario modificarlo.
-   public ValidadorLetras(String rutaDiccionario) {
-      // ...
-   }
+    // El listado de palabras válidas ya se carga en el constructor. No es necesario modificarlo.
+    public ValidadorLetras(String rutaDiccionario) {
+        // ...
+    }
 
-   // Código a implementar
-   public boolean esValida(String palabra, String letras) {
-      // A implementar
-   }
+    // Código a implementar
+    public boolean esValida(String palabra, String letras) {
+        // A implementar
+    }
 
-   // Se usa para normalizar palabras.
-   public String limpiarPalabra(String palabra) {
-      // ...
-   }
+    // Se usa para normalizar palabras.
+    public String limpiarPalabra(String palabra) {
+        // ...
+    }
 }
 ```
 
 ### Pistas para la implementación
 
-1. Convierte letras a una lista de `Character`. 
+1. Convierte letras a una lista de `Character`.
 2. Recorre la palabra carácter a carácter e intenta "consumir" cada letra eliminándola de la lista (método `remove()`):
-   - si no puedes eliminar una letra, este método devuelve `false`. 
+    - si no puedes eliminar una letra, este método devuelve `false`.
 3. Si todas las letras se han podido consumir, comprueba si la palabra normalizada (resultado de llamar a `limpiarPalabra(palabra)` está en el Set de palabras válidas.
 
 ---
@@ -440,14 +454,14 @@ Una expresión se considera válida si cumple todas las condiciones siguientes:
 
 1. El resultado a la izquierda del `=` es un número entero.
 2. Los números utilizados a la derecha del `=` están disponibles en la lista `numerosDisponibles`.
-   - Cada número disponible solo puede usarse una vez. 
-   - Si se usa un número que no está disponible (o se repite más veces de lo permitido), la expresión no es válida.
+    - Cada número disponible solo puede usarse una vez.
+    - Si se usa un número que no está disponible (o se repite más veces de lo permitido), la expresión no es válida.
 3. La expresión puede evaluarse de izquierda a derecha, aplicando operaciones de dos en dos.
 4. Solo se permiten los operadores: `+`, `-`, `*`, `/`.
 5. No se permiten resultados intermedios negativos.
 6. Las divisiones solo son válidas si el resultado es entero exacto.
-   - No se permiten divisiones con resto. 
-   - No se permite dividir entre 0.
+    - No se permiten divisiones con resto.
+    - No se permite dividir entre 0.
 7. El resultado calculado al evaluar la parte derecha debe coincidir exactamente con el resultado indicado a la izquierda del `=`.
 
 ### Código parcial de la tarea:
@@ -455,50 +469,50 @@ Una expresión se considera válida si cumple todas las condiciones siguientes:
 Crea la clase `ValidadorCifras` en el paquete `juego`:
 
 ```java
-package main.java.es.upm.dit.adsw.cifrasyletras.juego;
+package es.upm.dit.adsw.cifrasyletras.juego;
 
 import java.util.List;
 
 public class ValidadorCifras {
 
-   // Método auxiliar para comprobar números usados
-   public boolean numerosUsadosValidos(String expresion, List<Integer> numerosDisponibles) {
+    // Método auxiliar para comprobar números usados
+    public boolean numerosUsadosValidos(String expresion, List<Integer> numerosDisponibles) {
       List<Integer> numerosSinUsar = new ArrayList<>(numerosDisponibles);
       String[] tokens = expresion.split(" ");
-      for (int i = 0; i < tokens.length; i += 2) {
-         try {
-            Integer n = Integer.parseInt(tokens[i]);
-            if (!numerosSinUsar.remove(n)) {
-               System.out.println("Número no disponible: " + n);
-               return false;
-            }
-         } catch (NumberFormatException e) {
-            System.out.println("Token no es un número: " + tokens[i]);
+      for(int i = 0; i < tokens.length; i+=2 ) {
+        try {
+          Integer n = Integer.parseInt(tokens[i]);
+          if ( !numerosSinUsar.remove(n) ) {
+            System.out.println("Número no disponible: " + n);
             return false;
-         }
+          }
+        } catch (NumberFormatException e) {
+          System.out.println("Token no es un número: " + tokens[i]);
+          return false;
+        }
       }
       return true;
-   }
+    }
 
-   // Código a implementar
-   public boolean esValida(String expresion, List<Integer> numerosDisponibles) {
-      String[] partes = expresion.split(" = ");
-
-      int resultado = 0;
-      try {
-         resultado = Integer.parseInt(partes[0]);
-      } catch (NumberFormatException e) {
-         System.out.println("Resultado no es un número: " + partes[0]);
-         return false;
-      }
-
-      if (!numerosUsadosValidos(partes[1], numerosDisponibles)) {
-         return false;
-      }
-
-      String[] tokens = partes[1].split(" ");
-      // A implementar: Calcular la expresión (tokens) e ir comprobando sus restricciones
-   }
+    // Código a implementar
+    public boolean esValida(String expresion, List<Integer> numerosDisponibles) {
+        String[] partes = expresion.split(" = ");
+    
+        int resultado =  0;
+        try {
+          resultado = Integer.parseInt(partes[0]);
+        } catch (NumberFormatException e) {
+          System.out.println("Resultado no es un número: " + partes[0]);
+          return false;
+        }
+    
+        if ( !numerosUsadosValidos(partes[1], numerosDisponibles) ) {
+          return false;
+        }
+    
+        String[] tokens = partes[1].split(" ");
+        // A implementar: Calcular la expresión (tokens) e ir comprobando sus restricciones
+    }
 }
 ```
 
@@ -508,12 +522,12 @@ Parte de la validación ya está implementada. En `esValida()` te falta:
 
 1. Inicializar el resultado calculado con el **primer número** de la expresión.
 2. Recorrer el resto de tokens de dos en dos:
-  - token impar → operador
-  - token par → siguiente número
+- token impar → operador
+- token par → siguiente número
 3. Aplicar la operación correspondiente al resultado acumulado.
 4. En cada operación, comprobar las restricciones:
-  - no resultados negativos,
-  - divisiones enteras exactas.
+- no resultados negativos,
+- divisiones enteras exactas.
 5. Al final, comprobar que el resultado calculado coincide con el resultado indicado a la izquierda del `=`.
 
 Si alguna comprobación falla, devuelve `false`.
