@@ -391,10 +391,22 @@ package es.upm.dit.adsw.cifrasyletras.juego;
 
 public class ValidadorLetras {
 
-    // El listado de palabras válidas ya se carga en el constructor. No es necesario modificarlo.
-    public ValidadorLetras(String rutaDiccionario) {
-        // ...
-    }
+   private Set<String> diccionarioDePalabrasValidas;
+    
+   // El listado de palabras válidas ya se carga en el constructor. No es necesario modificarlo.
+   public ValidadorLetras(String rutaDiccionario) {
+      diccionarioDePalabrasValidas = new HashSet<>();
+      try{
+         BufferedReader br = new BufferedReader(new FileReader(rutaDiccionario));
+         String linea;
+         while ( (linea = br.readLine()) != null ) {
+            diccionarioDePalabrasValidas.add(limpiarPalabra(linea));
+         }
+         br.close();
+      } catch (Exception e) {
+         e.printStackTrace();
+      }
+   }
 
     // Código a implementar
     public boolean esValida(String palabra, String letras) {
@@ -403,7 +415,16 @@ public class ValidadorLetras {
 
     // Se usa para normalizar palabras.
     public String limpiarPalabra(String palabra) {
-        // ...
+       String palabraLimpia = palabra;
+       palabraLimpia = palabraLimpia.toLowerCase();
+       palabraLimpia = palabraLimpia.trim();
+       palabraLimpia = palabraLimpia.replaceAll("á", "a");
+       palabraLimpia = palabraLimpia.replaceAll("é", "e");
+       palabraLimpia = palabraLimpia.replaceAll("í", "i");
+       palabraLimpia = palabraLimpia.replaceAll("ó", "o");
+       palabraLimpia = palabraLimpia.replaceAll("ú", "u");
+       palabraLimpia = palabraLimpia.replaceAll("ü", "u");
+       return palabraLimpia;
     }
 }
 ```
