@@ -543,7 +543,7 @@ Una expresión se considera válida si cumple todas las condiciones siguientes:
 > Parte de esta validación ya se ha implementado en el código proporcionado arriba.
 > Leyendo el código, ¿sabrías identificar qué puntos se han comprobado?
 > 
-> Nota: El método `split()`: expresion.split(" = ")` busca el String `" = "` y devuelve una lista que contiene lo que haya a la izquierda de ese String y como segundo elemento lo que haya a la izquierda. Por ejemplo:
+> Nota: El método `split()`: `expresion.split(" = ")` busca el String `" = "` y devuelve una lista que contiene lo que haya a la izquierda de ese String y como segundo elemento lo que haya a la izquierda. Por ejemplo:
 > Dada la expresión: `250 = 125 * 2` devuelve: `["250", "125 * 2"]`
 
 Ahora debemos calcular la expresión paso a paso utilizando el array `tokens`.
