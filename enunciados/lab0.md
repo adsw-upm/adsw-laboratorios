@@ -433,10 +433,11 @@ Una palabra se considera válida si cumple las dos condiciones siguientes:
 Esto lo implementaremos mediante los siguientes pasos:
 1. Crearemos una lista que contenga caracteres (`Character`) a partir del conjunto de letras que se da al concursante (las letras con las que intentar formar una palabra).
    - Esto lo haremos creando la lista vacía, iterando cada letra con `letras.toCharArray()` y añadiendo cada uno de esos caracteres a la lista vacía.
-2. Recorremos los caracteres de la palabra que ha formado el usuario (`palabra`), de igual modo que antes: `palabra.toCharArray()`.
+2. Normalizamos la palabra que ha formado el usuario (`palabra`), quitando tildes, espacios y poniéndolo en minúsculas. Esto lo haremos llamando al método `limpiarPalabra(palabra)`.
+3. Recorremos los caracteres de la palabra normalizada, de igual modo que en el paso 1: `palabra.toCharArray()`.
    - Intentaremos borrar cada caracter de la lista que contiene las letras válidas (la que hemos creado en el paso 1), utilizando el método `remove()`.
    - El método `remove()` devolverá `true` si ha conseguido borrarlo o `false` si no. Si no lo ha podido borrar, es que esa letra no es válida, en ese caso el método `esValida()` debe devolver `false`.
-3. Ahora comprobaremos si la palabra existe realmente, eso lo sabremos si la palabra existe en `diccionarioDePalabrasValidas`. Si existe, el método `esValida()` devolverá `true`y si no, `false`.
+4. Ahora comprobaremos si la palabra normalizada existe realmente, eso lo sabremos si la palabra existe en `diccionarioDePalabrasValidas`. Si existe, el método `esValida()` devolverá `true`y si no, `false`.
 
 ---
 
