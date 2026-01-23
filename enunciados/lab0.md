@@ -437,6 +437,7 @@ Esto lo implementaremos mediante los siguientes pasos:
 3. Recorremos los caracteres de la palabra normalizada, de igual modo que en el paso 1: `palabra.toCharArray()`.
    - Intentaremos borrar cada caracter de la lista que contiene las letras válidas (la que hemos creado en el paso 1), utilizando el método `remove()`.
    - El método `remove()` devolverá `true` si ha conseguido borrarlo o `false` si no. Si no lo ha podido borrar, es que esa letra no es válida, en ese caso el método `esValida()` debe devolver `false`.
+   - Atención: la lista que hemos creado en el paso 1 es de tipo `Character`, mientras que `toCharArray()` itera una lista del tipo primitivo `char`, luego al hacer el `remove()` saldrá un error. Debemos hacer un cast a `Character`, mediante: `(Character) c`
 4. Ahora comprobaremos si la palabra normalizada existe realmente, eso lo sabremos si la palabra existe en `diccionarioDePalabrasValidas`. Si existe, el método `esValida()` devolverá `true`y si no, `false`.
 
 ---
