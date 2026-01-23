@@ -374,14 +374,6 @@ validadorLetras.esValida(palabra, letras);
 
 El método debe devolver `true` si la palabra es válida y `false` en caso contrario.
 
-### Qué significa que la palabra sea válida
-
-Una palabra se considera válida si cumple las dos condiciones siguientes:
-1. Solo utiliza letras disponibles en el conjunto letras (respetando repeticiones).
-    - Si la palabra contiene alguna letra que no se proporcionó (o la usa más veces de las permitidas), la palabra no es válida.
-2. Existe en el listado de palabras válidas (fichero `data/es.txt`).
-    - La palabra se comprobará en un conjunto (`Set`) de palabras válidas cargado al iniciar el validador.
-
 ### Código parcial de la tarea:
 
 Crea la clase `ValidadorLetras` en el paquete `juego`:
@@ -393,7 +385,8 @@ public class ValidadorLetras {
 
    private Set<String> diccionarioDePalabrasValidas;
     
-   // El listado de palabras válidas ya se carga en el constructor. No es necesario modificarlo.
+   // Este método lee el fichero de la ruta que se pasa como parámetro y carga el conjunto de palabras válidas en 
+   //  diccionarioDePalabrasValidas
    public ValidadorLetras(String rutaDiccionario) {
       diccionarioDePalabrasValidas = new HashSet<>();
       try{
@@ -429,12 +422,21 @@ public class ValidadorLetras {
 }
 ```
 
-### Pistas para la implementación
+### Qué significa que la palabra sea válida
 
-1. Convierte letras a una lista de `Character`.
-2. Recorre la palabra carácter a carácter e intenta "consumir" cada letra eliminándola de la lista (método `remove()`):
-    - si no puedes eliminar una letra, este método devuelve `false`.
-3. Si todas las letras se han podido consumir, comprueba si la palabra normalizada (resultado de llamar a `limpiarPalabra(palabra)` está en el Set de palabras válidas.
+Una palabra se considera válida si cumple las dos condiciones siguientes:
+1. Solo utiliza letras disponibles en el conjunto letras (respetando repeticiones).
+    - Si la palabra contiene alguna letra que no se proporcionó (o la usa más veces de las permitidas), la palabra no es válida.
+2. Existe en el listado de palabras válidas (fichero `ADSW26_CifrasyLetras/data/es.txt`).
+    - La palabra se comprobará en un conjunto de palabras válidas (`diccionarioDePalabrasValidas`) cargado al iniciar el validador.
+
+Esto lo implementaremos mediante los siguientes pasos:
+1. Crearemos una lista que contenga caracteres (`Character`) a partir del conjunto de letras que se da al concursante (las letras con las que intentar formar una palabra).
+   - Esto lo haremos creando la lista vacía, iterando cada letra con `letras.toCharArray()` y añadiendo cada uno de esos caracteres a la lista vacía.
+2. Recorremos los caracteres de la palabra que ha formado el usuario (`palabra`), de igual modo que antes: `palabra.toCharArray()`.
+   - Intentaremos borrar cada caracter de la lista que contiene las letras válidas (la que hemos creado en el paso 1), utilizando el método `remove()`.
+   - El método `remove()` devolverá `true` si ha conseguido borrarlo o `false` si no. Si no lo ha podido borrar, es que esa letra no es válida, en ese caso el método `esValida()` debe devolver `false`.
+3. Ahora comprobaremos si la palabra existe realmente, eso lo sabremos si la palabra existe en `diccionarioDePalabrasValidas`. Si existe, el método `esValida()` devolverá `true`y si no, `false`.
 
 ---
 
@@ -449,41 +451,6 @@ validadorCifras.esValida(expresion, numeros);
 ```
 
 El método debe devolver `true` si la expresión es válida y `false` en caso contrario.
-
-### Formato esperado de la expresión
-
-La expresión que introduce el jugador debe tener el siguiente formato:
-
-```
-<resultado> = <número> <operador> <número> <operador> <número> ...
-```
-
-Ejemplo:
-
-```
-952 = 50 + 75 - 6 * 8
-```
-
-> [!IMPORTANT]
-> La expresión debe estar separada por espacios exactamente como se muestra:
-> - los números y operadores van separados por un espacio,
-> - el símbolo `=` debe ir con espacios a ambos lados: " = ".
-
-### Qué significa que la expresión sea válida
-
-Una expresión se considera válida si cumple todas las condiciones siguientes:
-
-1. El resultado a la izquierda del `=` es un número entero.
-2. Los números utilizados a la derecha del `=` están disponibles en la lista `numerosDisponibles`.
-    - Cada número disponible solo puede usarse una vez.
-    - Si se usa un número que no está disponible (o se repite más veces de lo permitido), la expresión no es válida.
-3. La expresión puede evaluarse de izquierda a derecha, aplicando operaciones de dos en dos.
-4. Solo se permiten los operadores: `+`, `-`, `*`, `/`.
-5. No se permiten resultados intermedios negativos.
-6. Las divisiones solo son válidas si el resultado es entero exacto.
-    - No se permiten divisiones con resto.
-    - No se permite dividir entre 0.
-7. El resultado calculado al evaluar la parte derecha debe coincidir exactamente con el resultado indicado a la izquierda del `=`.
 
 ### Código parcial de la tarea:
 
@@ -537,26 +504,83 @@ public class ValidadorCifras {
 }
 ```
 
-### Pistas para la implementación:
+### Formato esperado de la expresión
 
-Parte de la validación ya está implementada. En `esValida()` te falta:
+La expresión que introduce el jugador debe tener el siguiente formato:
 
-1. Inicializar el resultado calculado con el **primer número** de la expresión.
-2. Recorrer el resto de tokens de dos en dos:
-- token impar → operador
-- token par → siguiente número
-3. Aplicar la operación correspondiente al resultado acumulado.
-4. En cada operación, comprobar las restricciones:
-- no resultados negativos,
-- divisiones enteras exactas.
-5. Al final, comprobar que el resultado calculado coincide con el resultado indicado a la izquierda del `=`.
+```
+<resultado> = <número> <operador> <número> <operador> <número> ...
+```
 
-Si alguna comprobación falla, devuelve `false`.
+Ejemplo:
+
+```
+952 = 50 + 75 - 6 * 8
+```
+
+> [!IMPORTANT]
+> La expresión debe estar separada por espacios exactamente como se muestra:
+> - los números y operadores van separados por un espacio,
+> - el símbolo `=` debe ir con espacios a ambos lados: " = ".
+
+### Qué significa que la expresión sea válida
+
+Una expresión se considera válida si cumple todas las condiciones siguientes:
+
+1. El resultado a la izquierda del `=` es un número entero.
+2. Los números utilizados a la derecha del `=` están disponibles en la lista `numerosDisponibles`.
+    - Cada número disponible solo puede usarse una vez.
+    - Si se usa un número que no está disponible (o se repite más veces de lo permitido), la expresión no es válida.
+3. La expresión puede evaluarse de izquierda a derecha, aplicando operaciones de dos en dos.
+4. Solo se permiten los operadores: `+`, `-`, `*`, `/`.
+5. No se permiten resultados intermedios negativos.
+6. Las divisiones solo son válidas si el resultado es entero exacto.
+    - No se permiten divisiones con resto.
+    - No se permite dividir entre 0.
+7. El resultado calculado al evaluar la parte derecha debe coincidir exactamente con el resultado indicado a la izquierda del `=`.
+
+> [!CAUTION]
+> Parte de esta validación ya se ha implementado en el código proporcionado arriba.
+> Leyendo el código, ¿sabrías identificar qué puntos se han comprobado?
+> 
+> Nota: El método `split()`: expresion.split(" = ")` busca el String `" = "` y devuelve una lista que contiene lo que haya a la izquierda de ese String y como segundo elemento lo que haya a la izquierda. Por ejemplo:
+> Dada la expresión: `250 = 125 * 2` devuelve: `["250", "125 * 2"]`
+
+Ahora debemos calcular la expresión paso a paso utilizando el array `tokens`.
+
+Esto lo implementaremos mediante los siguientes pasos:
+
+1. Inicializar el cálculo con el primer número:
+   - Convertimos `tokens[0]` a entero con `Integer.parseInt()`.
+   - Lo guardamos en una variable, por ejemplo `resultadoCalculado`.
+
+2. Recorrer el array `tokens` de dos en dos empezando en la posición 1:
+   - `tokens[i]` será el operador.
+   - `tokens[i+1]` será el siguiente número.
+   - Convertimos ese número con `Integer.parseInt()`.
+
+3. Aplicar la operación correspondiente usando un `switch`:
+   - "+" → sumar.
+   - "-" → restar (comprobando que el resultado no sea negativo).
+   - "*" → multiplicar.
+   - "/" → dividir (comprobando que no sea división entre 0 y que sea exacta, sin resto).
+   - Si el operador no es válido → devolver `false`.
+
+4. Si en algún momento:
+   - Falta un número después de un operador,
+   - El resultado intermedio es negativo,
+   - La división no es válida,
+     el método debe devolver `false`.
+
+5. Al finalizar el recorrido:
+   - Comparar `resultadoCalculado` con el resultado esperado (parte izquierda).
+   - Si coinciden → devolver `true`.
+   - Si no coinciden → devolver `false`.
 
 > [!TIP]
-> Para convertir un String a número entero, puedes usar: `Integer.parseInt()` pasándole como parámetro el String.
+> Para convertir un String a número entero, estamos usando: `Integer.parseInt()` pasándole como parámetro el String.
 >
-> Si quieres convertir un char a un String, puedes utilizar `String.valueOf()` pasándole como parámetro el char.
+> Si quieres convertir un char a un String, podemos utilizar `String.valueOf()` pasándole como parámetro el char.
 
 ---
 
