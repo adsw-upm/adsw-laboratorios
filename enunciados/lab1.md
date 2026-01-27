@@ -206,7 +206,7 @@ Por eso, la primera coincidencia será la palabra más larga posible.
 
 ## Resultado esperado
 
-Al ejecutar el juego usando `LetrasFuerzaBruta`, en cada prueba de letras el programa debe devolver automáticamente una palabra válida.
+Al ejecutar el juegoHumano usando `LetrasFuerzaBruta`, en cada prueba de letras el programa debe devolver automáticamente una palabra válida.
 
 Si no existiera ninguna palabra posible, se puede devolver `null` (o cadena vacía, según se indique en el laboratorio).
 

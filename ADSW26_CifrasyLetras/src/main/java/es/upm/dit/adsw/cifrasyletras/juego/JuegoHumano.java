@@ -11,7 +11,7 @@ import java.util.Scanner;
 import es.upm.dit.adsw.cifrasyletras.cifras.Cifras;
 import es.upm.dit.adsw.cifrasyletras.cifras.CifrasHumano;
 
-public class Juego {
+public class JuegoHumano {
 
     private final int NUM_LETRAS = 9;
     private final int NUM_CIFRAS = 6;
@@ -26,13 +26,13 @@ public class Juego {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Juego juego = new Juego(2, 10, new LetrasHumano(sc),
+        JuegoHumano juegoHumano = new JuegoHumano(2, 10, new LetrasHumano(sc),
                 new CifrasHumano(sc));
-        juego.jugar();
+        juegoHumano.jugar();
         sc.close();
     }
 
-    public Juego(int pruebasCifras, int pruebasLetras, Letras jugadorLetras, Cifras jugadorCifras) {
+    public JuegoHumano(int pruebasCifras, int pruebasLetras, Letras jugadorLetras, Cifras jugadorCifras) {
         this.pruebasCifras = pruebasCifras;
         this.pruebasLetras = pruebasLetras;
         this.jugadorLetras = jugadorLetras;

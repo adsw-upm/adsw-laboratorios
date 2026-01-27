@@ -6,7 +6,7 @@ Este año vamos a recrear el programa de televisión *Cifras y Letras*, que cons
 
 ## Prueba de Letras
 
-En la prueba de letras, el concursante recibe un conjunto de letras y debe intentar formar la palabra válida en español más larga posible, utilizando únicamente dichas letras.
+En la prueba de Letras, el concursante recibe un conjunto de letras y debe intentar formar la palabra válida en español más larga posible, utilizando únicamente dichas letras.
 
 Por ejemplo, el concursante recibe el siguiente conjunto de letras:
 
@@ -22,7 +22,7 @@ También sería válida `morales` (7 letras).
 * Cada letra del conjunto inicial solo puede utilizarse una vez, salvo que dicha letra aparezca repetida en el conjunto inicial.
   Por ejemplo, si el conjunto contiene una sola letra `e`, no es válido formar una palabra que contenga dos letras `e`.
 * No es obligatorio utilizar todas las letras del conjunto, pero cuantas más, mejor.
-* La palabra formada debe existir en español y aparecer en el listado de palabras válidas.
+* La palabra formada debe existir en español y aparecer en el listado de palabras válidas (este listado se encuentra en `data/es.txt`).
 * No se permiten nombres propios.
 * En caso de existir varias palabras con la misma longitud, cualquiera de ellas se considera una solución correcta.
 
@@ -30,7 +30,7 @@ También sería válida `morales` (7 letras).
 
 ## Prueba de Cifras
 
-En la prueba de cifras, el concursante recibe un conjunto de números y un número objetivo, y debe intentar obtener dicho número objetivo mediante operaciones aritméticas básicas.
+En la prueba de Cifras, el concursante recibe un conjunto de números y un número objetivo, y debe intentar obtener dicho número objetivo mediante operaciones aritméticas básicas.
 
 Por ejemplo, el concursante recibe los siguientes números:
 
@@ -91,7 +91,6 @@ Es decir, **no se interpreta como una expresión matemática estándar**, sino c
 ## Importar el Proyecto en Eclipse
 
 La manera más sencilla de descargar este código es clonarlo o importarlo en el entorno de desarrollo.
-También es posible importar el fichero `.zip` para cada laboratorio disponible en GitHub seleccionando el botón "Code" (en color verde) y haciendo clic en descargar el repositorio .
 
 ### Primera descarga
 
@@ -112,20 +111,32 @@ Tras esto, hacemos clic en `Next` **tres veces**, hasta que aparezca la siguient
 Debemos asegurarnos de marcar **SÓLO** la opción de adsw-laboratorios/ADSW26_CifrasyLetras.
 
 Entonces hacemos clic en `Finish`. El proyecto deberá importarse correctamente. Aunque todo se haya hecho bien, aparecerá
-un error en la clase `Juego.java`. Esto es normal, se resolverá al resolver las tareas 2 y 3 de este laboratorio.
+un error en la clase `JuegoHumano`. Esto es normal, se resolverá al ir completando las tareas propuestas en este laboratorio.
 
 ### Actualización
 
-Para actualizar los enunciados, se puede actualizar el código pulsando con botón derecho en el proyecto general (`adsw-laboratorios`) `-> Team -> Pull`.
+Para actualizar el código (si fuera necesario en futuros laboratorios), se puede hacer pulsando con botón derecho en el proyecto general (`adsw-laboratorios`) `-> Team -> Pull`.
 Es aconsejable refrescar los ficheros en eclipse previamente `F5` o mediante `Botón derecho -> Refresh` en el repositorio principal.
 
 También pueden verse todos los repositorios disponibles en Eclipse mostrando la vista de repositorios en el menú: `Window -> Show View -> Others... -> Git Repositories`
 
 ---
 
+## Objetivo del laboratorio
+
+El objetivo de este laboratorio es poder jugar a ambas pruebas de Cifras y Letras en modo humano a través de la consola.
+Esto significa que el programa debe indicar las letras o las cifras, y el usuario puede introducir su solución propuesta en cada caso.
+El programa debe verificar si lo que ha introducido el usuario es correcto respecto a las reglas del juego.
+
+> [!ATENTION]
+> Esa interación por consola entre la máquina y el usuario se proporciona ya implementada en la clase `JuegoHumano`, por eso
+> da error al importar el proyecto, ya que incluye validaciones que implementaremos durante el laboratorio.
+
+---
+
 ## Estructura del laboratorio
 
-El código del laboratorio se organiza en varios paquetes, siguiendo una estructura que separa cada una de las pruebas del juego.
+El código del laboratorio se organiza en varios paquetes, siguiendo una estructura que separa cada una de las pruebas del juego humano.
 
 ### Lista de palabras
 
@@ -146,7 +157,7 @@ El código fuente se organiza en tres bloques principales:
 
 - `cifras`: clases relacionadas con la prueba de Cifras.
 - `letras`: clases relacionadas con la prueba de Letras.
-- `juego`: lógica general del juego y validadores de las pruebas.
+- `juego`: lógica general para interactuar con el jugador humano y validadores de las pruebas.
 
 ---
 
@@ -201,11 +212,11 @@ Las clases que implementan esta interfaz deben proporcionar una implementación 
 
 ---
 
-## Tarea 1: Implementar la clase `LetrasHumano` (añadir metodos)
+## Tarea 1: Implementar la clase `LetrasHumano`
 
 En esta primera tarea el objetivo es permitir que un **jugador humano** pueda participar en la prueba de Letras introduciendo su respuesta por consola.
 
-Para ello, debes implementar la clase:
+Para ello, debes crear la clase:
 
 - `LetrasHumano`
 
@@ -215,22 +226,7 @@ En el paquete:
 es.upm.dit.adsw.cifrasyletras.letras
 ```
 
-Esta clase debe implementar la interfaz `Letras`. Cuando el juego genera una prueba de letras, mostrará por consola un conjunto de letras disponibles (por ejemplo `aertlosmi`) y, a continuación, invocará el método:
-
-```java
-String palabra = jugadorLetras.obtenerPalabra(letras);
-```
-
-Tu implementación del método `obtenerPalabra` debe:
-
-1. Leer la línea completa introducida por el usuario (usando el método `nextLine()`).
-2. Eliminar los espacios iniciales y finales (usando el método `trim()`).
-3. Devolver la palabra introducida.
-
-En esta tarea no se pide resolver la prueba automáticamente.
-El método debe limitarse a leer y devolver la palabra introducida manualmente por el usuario.
-
-### Código parcial de la tarea:
+Esta clase debe implementar la interfaz `Letras`. En esta clase, copia el siguiente código:
 
 ```java
 package es.upm.dit.adsw.cifrasyletras.letras;
@@ -251,6 +247,24 @@ public class LetrasHumano implements Letras {
 
 La clase `Scanner` nos permite manejar la entrada por consola, para poder recibir la palabra que el jugador introduzca.
 
+
+Cuando la clase `JuegoHumano` del paquete `juego` genera una prueba de letras, mostrará por consola un conjunto de letras disponibles (por ejemplo `aertlosmi`) y, a continuación, invocará el método:
+
+```java
+String palabra = jugadorLetras.obtenerPalabra(letras);
+```
+
+Este método deberá recuperar la respuesta que el jugador humano (usuario) ha introducido por consola. Pero está funcionalidad aún 
+no está implementada. Deberás hacerlo tú, creando y completando el método `obtenerPalabra` de la clase `LetrasHumano` para que haga lo siguiente:
+
+1. Leer la línea completa introducida por el usuario (usando el método `nextLine()`).
+2. Eliminar los espacios iniciales y finales (usando el método `trim()`).
+3. Devolver la palabra introducida.
+
+Como puedes observar, el método se limita a leer y devolver la palabra introducida manualmente por el usuario.
+
+---
+
 ## Tarea 2: Implementar la clase `CifrasHumano`
 
 En esta segunda tarea el objetivo es permitir que un **jugador humano** pueda participar en la prueba de Cifras introduciendo su respuesta por consola.
@@ -265,28 +279,8 @@ En el paquete:
 es.upm.dit.adsw.cifrasyletras.cifras
 ```
 
-Esta clase debe implementar la interfaz `Cifras`. Cuando el juego genera una prueba de cifras, mostrará por consola:
+Esta clase debe implementar la interfaz `Cifras`. Ahora copia el siguiente código en esa clase:
 
-- la lista de números disponibles (por ejemplo `25 50 75 3 6 8`)
-- el objetivo (por ejemplo `952`)
-
-y, a continuación, invocará el método:
-
-```java
-String expresion = jugadorCifras.obtenerCifra(objetivo, numeros);
-```
-
-Tu implementación del método `obtenerCifra` debe:
-
-1. Leer la línea completa introducida por el usuario (usando el método `nextLine()`).
-2. Eliminar los espacios iniciales y finales (usando el método `trim()`).
-3. Devolver la expresión introducida como una cadena.
-
-En esta tarea no se pide resolver la prueba automáticamente ni construir la expresión a partir de los números.
-El método debe limitarse a leer y devolver la expresión escrita por el usuario.
-El jugador humano será quien escriba la expresión manualmente (por ejemplo: 952 = 50 + 75 - 6 * 8).
-
-### Código parcial de la tarea:
 
 ```java
 package es.upm.dit.adsw.cifrasyletras.cifras;
@@ -306,23 +300,44 @@ public class CifrasHumano implements Cifras {
 }
 ```
 
-La clase `Scanner` nos permite manejar la entrada por consola, para poder recibir la expresión que el jugador introduzca.
+Recuerda que la clase `Scanner` nos permite manejar la entrada por consola, para poder recibir la expresión que el jugador introduzca.
+
+Cuando la clase `JuegoHumano` genera una prueba de cifras, mostrará por consola:
+
+- la lista de números disponibles (por ejemplo `25 50 75 3 6 8`)
+- el objetivo (por ejemplo `952`)
+
+y, a continuación, en dicha clase se invocará el método:
+
+```java
+String expresion = jugadorCifras.obtenerCifra(objetivo, numeros);
+```
+
+Igual que en la prueba anterior, este método deberá recuperar la respuesta que el jugador humano (usuario) ha introducido por consola. Pero está funcionalidad aún
+no está implementada. Deberás hacerlo tú, creando y completando el método `obtenerPalabra` de la clase `CifrasHumano` para que haga lo siguiente:
+
+1. Leer la línea completa introducida por el usuario (usando el método `nextLine()`).
+2. Eliminar los espacios iniciales y finales (usando el método `trim()`).
+3. Devolver la expresión introducida como una cadena.
+
+El jugador humano será quien haya escrito la expresión manualmente (por ejemplo: `952 = 50 + 75 - 6 * 8`), y 
+el método debe limitarse a leer y devolver dicha expresión.
 
 ---
 
-## Tarea 3: Entender la clase `Juego`
+## Tarea 3: Entender la clase `JuegoHumano`
 
 En esta tarea no tienes que programar nada.  
-El objetivo es entender **cómo funciona el flujo del juego** y cómo se integran las clases que has implementado.
+El objetivo es entender **cómo funciona el flujo de la interacción humana** y cómo se integran las clases que has implementado.
 
-La clase `Juego` es el punto central del programa. Se encarga de:
+La clase `JuegoHumano` es el punto central del programa. Se encarga de:
 - generar las pruebas de letras y cifras,
 - pedir una respuesta al jugador,
 - y validar dicha respuesta.
 
 ---
 
-### Flujo general del juego
+### Flujo general del JuegoHumano
 
 1. El programa comienza en el método `main`.
 2. Se crean dos jugadores humanos:
@@ -366,7 +381,7 @@ Tu clase `CifrasHumano` solo lee la expresión. La validación se realiza con el
 
 En esta tarea vas a implementar la validación de una palabra en la prueba de Letras.
 
-El juego llamará a este método después de que el jugador introduzca una palabra por consola:
+La clase `JuegoHumano` llamará a este método después de que el jugador introduzca una palabra por consola:
 
 ```java
 validadorLetras.esValida(palabra, letras);
@@ -427,14 +442,14 @@ public class ValidadorLetras {
 Una palabra se considera válida si cumple las dos condiciones siguientes:
 1. Solo utiliza letras disponibles en el conjunto letras (respetando repeticiones).
     - Si la palabra contiene alguna letra que no se proporcionó (o la usa más veces de las permitidas), la palabra no es válida.
-2. Existe en el listado de palabras válidas (fichero `ADSW26_CifrasyLetras/data/es.txt`).
+2. Existe en el listado de palabras válidas (fichero `data/es.txt`).
     - La palabra se comprobará en un conjunto de palabras válidas (`diccionarioDePalabrasValidas`) cargado al iniciar el validador.
 
 Esto lo implementaremos mediante los siguientes pasos:
 1. Crearemos una lista que contenga caracteres (`Character`) a partir del conjunto de letras que se da al concursante (las letras con las que intentar formar una palabra).
-   - Esto lo haremos creando la lista vacía, iterando cada letra con `letras.toCharArray()` y añadiendo cada uno de esos caracteres a la lista vacía.
+   - Esto lo haremos creando la lista vacía, iterando cada letra de las proporcionadas en un bucle con `letras.toCharArray()` y añadiendo cada uno de esos caracteres a la lista vacía.
 2. Normalizamos la palabra que ha formado el usuario (`palabra`), quitando tildes, espacios y poniéndolo en minúsculas. Esto lo haremos llamando al método `limpiarPalabra(palabra)`.
-3. Recorremos los caracteres de la palabra normalizada, de igual modo que en el paso 1: `palabra.toCharArray()`.
+3. Recorremos los caracteres de la palabra normalizada, igual que en el paso 1: `palabra.toCharArray()`.
    - Intentaremos borrar cada caracter de la lista que contiene las letras válidas (la que hemos creado en el paso 1), utilizando el método `remove()`.
    - El método `remove()` devolverá `true` si ha conseguido borrarlo o `false` si no. Si no lo ha podido borrar, es que esa letra no es válida, en ese caso el método `esValida()` debe devolver `false`.
    - Atención: la lista que hemos creado en el paso 1 es de tipo `Character`, mientras que `toCharArray()` itera una lista del tipo primitivo `char`, luego al hacer el `remove()` saldrá un error. Debemos hacer un cast a `Character`, mediante: `(Character) c`
@@ -446,7 +461,7 @@ Esto lo implementaremos mediante los siguientes pasos:
 
 En esta tarea vas a implementar la validación de una expresión en la prueba de Cifras.
 
-El juego llamará a este método después de que el jugador introduzca una expresión por consola:
+El JuegoHumano llamará a este método después de que el jugador introduzca una expresión por consola:
 
 ```java
 validadorCifras.esValida(expresion, numeros);
