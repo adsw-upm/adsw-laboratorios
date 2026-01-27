@@ -75,7 +75,7 @@ public class LetrasFuerzaBruta implements Letras {
 
 Deberá leer el fichero:
 
-`ADSW26_CifrasyLetras/data/es.txt`
+`data/es.txt`
 
 y construir un:
 
