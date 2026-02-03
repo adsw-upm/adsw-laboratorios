@@ -128,8 +128,8 @@ El objetivo de este laboratorio es poder jugar a ambas pruebas de Cifras y Letra
 Esto significa que el programa debe indicar las letras o las cifras, y el usuario puede introducir su solución propuesta en cada caso.
 El programa debe verificar si lo que ha introducido el usuario es correcto respecto a las reglas del juego.
 
-> [!ATENTION]
-> Esa interación por consola entre la máquina y el usuario se proporciona ya implementada en la clase `JuegoHumano`, por eso
+> [!ATTENTION]
+> Esa interacción por consola entre la máquina y el usuario se proporciona ya implementada en la clase `JuegoHumano`, por eso
 > da error al importar el proyecto, ya que incluye validaciones que implementaremos durante el laboratorio.
 
 ---
@@ -314,7 +314,7 @@ String expresion = jugadorCifras.obtenerCifra(objetivo, numeros);
 ```
 
 Igual que en la prueba anterior, este método deberá recuperar la respuesta que el jugador humano (usuario) ha introducido por consola. Pero está funcionalidad aún
-no está implementada. Deberás hacerlo tú, creando y completando el método `obtenerPalabra` de la clase `CifrasHumano` para que haga lo siguiente:
+no está implementada. Deberás hacerlo tú, creando y completando el método `obtenerCifra` de la clase `CifrasHumano` para que haga lo siguiente:
 
 1. Leer la línea completa introducida por el usuario (usando el método `nextLine()`).
 2. Eliminar los espacios iniciales y finales (usando el método `trim()`).
@@ -396,6 +396,11 @@ Crea la clase `ValidadorLetras` en el paquete `juego`:
 ```java
 package es.upm.dit.adsw.cifrasyletras.juego;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.HashSet;
+import java.util.Set;
+
 public class ValidadorLetras {
 
    private Set<String> diccionarioDePalabrasValidas;
@@ -416,7 +421,6 @@ public class ValidadorLetras {
       }
    }
 
-    // Código a implementar
     public boolean esValida(String palabra, String letras) {
         // A implementar
     }
@@ -476,6 +480,7 @@ Crea la clase `ValidadorCifras` en el paquete `juego`:
 ```java
 package es.upm.dit.adsw.cifrasyletras.juego;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ValidadorCifras {
@@ -499,7 +504,6 @@ public class ValidadorCifras {
       return true;
     }
 
-    // Código a implementar
     public boolean esValida(String expresion, List<Integer> numerosDisponibles) {
         String[] partes = expresion.split(" = ");
     
@@ -560,7 +564,7 @@ Una expresión se considera válida si cumple todas las condiciones siguientes:
 > Parte de esta validación ya se ha implementado en el código proporcionado arriba.
 > Leyendo el código, ¿sabrías identificar qué puntos se han comprobado?
 > 
-> Nota: El método `split()`: `expresion.split(" = ")` busca el String `" = "` y devuelve una lista que contiene lo que haya a la izquierda de ese String y como segundo elemento lo que haya a la izquierda. Por ejemplo:
+> Nota: El método `split()`: `expresion.split(" = ")` busca el String `" = "` y devuelve una lista que contiene lo que haya a la izquierda de ese String y como segundo elemento lo que haya a la derecha. Por ejemplo:
 > Dada la expresión: `250 = 125 * 2` devuelve: `["250", "125 * 2"]`
 
 Ahora debemos calcular la expresión paso a paso utilizando el array `tokens`.
