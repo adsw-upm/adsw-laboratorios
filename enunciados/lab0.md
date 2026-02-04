@@ -11,7 +11,7 @@ En la prueba de Letras, el concursante recibe un conjunto de letras y debe inten
 Por ejemplo, el concursante recibe el siguiente conjunto de letras:
 
 ```
-a  e  r  t  l  o  s  m  i
+a  e  r  s  l  o  s  m  i
 ```
 
 Una posible solución sería `realismos`, que emplea las 9 letras disponibles.
@@ -189,9 +189,7 @@ De forma análoga, en el paquete `cifras` se define la interfaz `Cifras`, que es
 
 ```java
 public interface Cifras {
-
-    public static final char[] OPERADORES = new char[] {'+', '-', '*', '/'};
-
+    
     /**
      * Obtener una cifra que se aproxime al objetivo usando los números dados.
      * El resultado es una expresión en forma de cadena que, al evaluarse,
