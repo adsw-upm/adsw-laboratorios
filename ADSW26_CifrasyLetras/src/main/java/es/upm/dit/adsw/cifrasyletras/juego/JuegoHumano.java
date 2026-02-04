@@ -132,12 +132,9 @@ public class JuegoHumano {
 
             boolean esValida = validadorCifras.esValida(expresion, numeros);
             if (esValida) {
-                int resultado = validadorCifras.evaluar(expresion);
-                System.out.println("La expresión es válida y da el resultado: " + resultado);
-                int diferencia = Math.abs(objetivo - resultado);
-                System.out.println("Diferencia con el objetivo: " + diferencia);
+                System.out.println("Números válidos!");
             } else {
-                System.out.println("La expresión no es válida.");
+                System.out.println("Números NO válidos!");
             }
         }
     }
