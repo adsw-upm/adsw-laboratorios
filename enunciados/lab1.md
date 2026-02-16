@@ -59,7 +59,7 @@ public class LetrasFuerzaBruta implements Letras {
 
    public LetrasFuerzaBruta() {
       palabrasValidas = new HashMap<>();
-      // Cargar palabras del fichero igual que en ValidadorLetras
+      // Cargar palabras del fichero data/es.txt y construir el HashMap
    }
 
    @Override
@@ -208,7 +208,7 @@ Por eso, la primera coincidencia será la palabra más larga posible.
 
 Al ejecutar el juegoHumano usando `LetrasFuerzaBruta`, en cada prueba de letras el programa debe devolver automáticamente una palabra válida.
 
-Si no existiera ninguna palabra posible, se puede devolver `null` (o cadena vacía, según se indique en el laboratorio).
+Si no existiera ninguna palabra posible, se puede devolver `null` o un string vacío.
 
 --- 
 
