@@ -152,7 +152,7 @@ Como recorres las combinaciones en orden de longitud (9 → 8 → 7 → …), la
 La siguiente animación muestra paso a paso el proceso de búsqueda por niveles (en el vídeo se ilustra con 5 letras
 para que sea más fácil de seguir), tal y como se espera que lo implemente tu código.
 
-![Visualización de la búsqueda por niveles](data/BFSLetras.gif)
+![Visualización de la búsqueda por niveles](data/Letras.gif)
 
 ▶️ **[Abrir animación completa (MP4, con controles de reproducción)](https://drive.upm.es/s/ExH9kq2wPzeeQja)**
 
