@@ -154,7 +154,7 @@ para que sea más fácil de seguir), tal y como se espera que lo implemente tu c
 
 ![Visualización de la búsqueda por niveles](data/Letras.gif)
 
-▶️ **[Abrir animación completa (MP4, con controles de reproducción)](https://drive.upm.es/s/ExH9kq2wPzeeQja)**
+▶️ **[Abrir animación completa (MP4, con controles de reproducción)](https://drive.upm.es/s/6e3mWotZMFq8Cdz)**
 
 > Recomendación: abre el MP4 si quieres pausar el vídeo, avanzar y retroceder para seguir con calma cada paso.
 
