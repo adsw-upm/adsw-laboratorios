@@ -59,7 +59,7 @@ public class LetrasFuerzaBruta implements Letras {
 
    public LetrasFuerzaBruta() {
       palabrasValidas = new HashMap<>();
-      // Cargar palabras del fichero data/es.txt y construir el HashMap
+      // Cargar palabras del fichero igual que en ValidadorLetras
    }
 
    @Override
@@ -97,7 +97,7 @@ Ejemplo:
 1. Leer el fichero línea a línea usando la clase `BufferedReader`.
 2. Para cada palabra:
    - Eliminar espacios con `trim()` y normalizar la palabra con el método `limpiarPalabra(String palabra)` (cópialo de la clase `ValidadorLetras`).
-   - Convertirla en un ArrayList con el método `toCharArray()`.
+   - Convertirla en un array de chars con el método `toCharArray()`.
    - Ordenarla con `Arrays.sort()`.
    - Reconstruir el String ordenado con el constructor de String: `new String(arrayOrdenado)`.
 3. Guardar en el `HashMap`:
@@ -117,7 +117,8 @@ Dentro del método `obtenerPalabra(String letras)`:
 
    A ese resultado lo llamaremos `letrasOrdenadas`.
 
-2) Comprobamos si con todas las letras, podemos formar una palabra (`mapaPalabras.contains(...)`)
+2) Comprobamos si con todas las letras podemos formar una palabra (`palabrasValidas.contains(...)`). Si podemos,
+   devolvemos esa palabra. Si no, debemos buscar palabras con menos letras (Tarea 3).
 
 ---
 
@@ -184,7 +185,7 @@ Si no, pasamos al siguiente nivel (haciendo `claves = nuevasClaves`).
 
 Pasos:
 
-1) Inicializar `claves` con una sola cadena: `letrasOrdenadas`.
+1) Insertamos en `claves` una sola cadena: `letrasOrdenadas`.
 
 2) Mientras `claves` no esté vacío:
    - Para cada `clave` en `claves`:
@@ -208,7 +209,7 @@ Por eso, la primera coincidencia será la palabra más larga posible.
 
 Al ejecutar el juegoHumano usando `LetrasFuerzaBruta`, en cada prueba de letras el programa debe devolver automáticamente una palabra válida.
 
-Si no existiera ninguna palabra posible, se puede devolver `null` o un string vacío.
+Si no existiera ninguna palabra posible, se puede devolver `null` (o cadena vacía, según se indique en el laboratorio).
 
 --- 
 
