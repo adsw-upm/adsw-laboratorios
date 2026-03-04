@@ -94,7 +94,7 @@ Ejemplo:
 
 ### Qué debes hacer
 
-1. Leer el fichero línea a línea usando la clase `BufferedReader`.
+1. Leer el fichero línea a línea usando la clase `BufferedReader` (tienes un ejemplo de cómo hacerlo en el constructor la clase `ValidadorLetras` del Laboratorio 0).
 2. Para cada palabra:
    - Eliminar espacios con `trim()` y normalizar la palabra con el método `limpiarPalabra(String palabra)` (cópialo de la clase `ValidadorLetras`).
    - Convertirla en un array de chars con el método `toCharArray()`.
@@ -189,12 +189,12 @@ Pasos:
 
 2) Mientras `claves` no esté vacío:
    - Para cada `clave` en `claves`:
-      - Generar nuevas cadenas eliminando una posición i:
-        `clave.substring(0, i) + clave.substring(i + 1)`
-      - Si esa nueva cadena está en `palabrasValidas`:
-        devolver la palabra asociada.
-      - Si no está:
-        añadir esa nueva cadena a `nuevasClaves`.
+     - Para cada posición `i` de cada `clave`:
+        - Generar una nueva cadena eliminando la posición `i`: `clave.substring(0, i) + clave.substring(i + 1)`
+        - Si esa nueva cadena está en `palabrasValidas`:
+          devolver la palabra asociada.
+        - Si no está:
+          añadir esa nueva cadena a `nuevasClaves`.
 
 3) Al terminar el nivel:
    - `claves = nuevasClaves`
