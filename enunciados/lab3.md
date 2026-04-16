@@ -34,16 +34,16 @@ Por ejemplo, si partimos de los números `[3, 5]`, el árbol comienza así:
 
 ```mermaid
 flowchart TD
-   R["Raíz<br/>expresionActual = null<br/>disponibles = [3,5]"]
+   R["Raíz<br/>expresion = null<br/>disponibles = [3,5]"]
 
-   N3["expresionActual = '3'<br/>valorActual = 3<br/>disponibles = [5]"]
-   N5["expresionActual = '5'<br/>valorActual = 5<br/>disponibles = [3]"]
+   N3["expresion = '3'<br/>valorActual = 3<br/>disponibles = [5]"]
+   N5["expresion = '5'<br/>valorActual = 5<br/>disponibles = [3]"]
 
-   N35s["expresionActual = '3 + 5'<br/>valorActual = 8<br/>disponibles = []"]
-   N35m["expresionActual = '3 * 5'<br/>valorActual = 15<br/>disponibles = []"]
-   N53s["expresionActual = '5 + 3'<br/>valorActual = 8<br/>disponibles = []"]
-   N53r["expresionActual = '5 - 3'<br/>valorActual = 2<br/>disponibles = []"]
-   N53m["expresionActual = '5 * 3'<br/>valorActual = 15<br/>disponibles = []"]
+   N35s["expresion = '3 + 5'<br/>valorActual = 8<br/>disponibles = []"]
+   N35m["expresion = '3 * 5'<br/>valorActual = 15<br/>disponibles = []"]
+   N53s["expresion = '5 + 3'<br/>valorActual = 8<br/>disponibles = []"]
+   N53r["expresion = '5 - 3'<br/>valorActual = 2<br/>disponibles = []"]
+   N53m["expresion = '5 * 3'<br/>valorActual = 15<br/>disponibles = []"]
 
    R --> N3
    R --> N5
