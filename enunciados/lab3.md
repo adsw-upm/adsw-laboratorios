@@ -362,6 +362,7 @@ Este método debe recorrer el árbol ya construido y devolver el nodo cuya expre
 2. Inicializar `mejorNodo` con el primer hijo de la raíz.
 
 3. Recorrer el árbol comenzando desde los hijos de la raíz (no desde la raíz, ya que la raíz no representa una expresión real).
+Para ello, tendrá que usar el método `recorrerArbol(...)` que desarrollará en la siguiente tarea.
 
 4. Devolver el `mejorNodo` encontrado.
 
