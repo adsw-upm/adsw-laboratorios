@@ -170,7 +170,7 @@ Para cada prueba:
 
 1. Genera las letras disponibles.
 2. En lugar de llamar directamente a `jugadorLetras.obtenerPalabra(...)`, publica la prueba en el `MonitorJuego` con `publicarPruebaLetras(...)`.
-3. Recoge la palabra devuelta por el monitor.
+3. Recoge la palabra devuelta por el monitor al llamar a `publicarPruebaLetras(...)`.
 4. Valida la palabra recibida con `ValidadorLetras`.
 5. Muestra el resultado de la prueba.
 
@@ -182,7 +182,7 @@ Para cada prueba:
 
 1. Genera el objetivo y los números disponibles.
 2. En lugar de llamar directamente a `jugadorCifras.obtenerCifra(...)`, publica la prueba en el `MonitorJuego` con `publicarPruebaCifras(...)`.
-3. Recoge la expresión devuelta por el monitor.
+3. Recoge la expresión devuelta por el monitor al llamar a `publicarPruebaCifras(...)`.
 4. Valida la expresión recibida con `ValidadorCifrasConParentesis`.
 5. Muestra el resultado de la prueba.
 
@@ -199,7 +199,7 @@ Las clases que hay que crear son:
 - `CifrasPracticaConcurrente` — versión concurrente del solver automático de cifras
 - `LetrasPracticaConcurrente` — versión concurrente del solver automático de letras
 
-Todas se crean del mismo modo. Para cada una, copia la clase original correspondiente y aplica los siguientes pasos:
+Todas se crean del mismo modo. **Para cada una**, copia la clase original correspondiente y aplica los siguientes pasos:
 
 **Paso 1.** Haz que la clase extienda `Thread` además de implementar su interfaz (`Cifras` o `Letras`):
 
