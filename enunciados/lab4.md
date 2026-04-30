@@ -120,7 +120,7 @@ En `JuegoConcurrente`, el juego no debe llamar directamente a esos métodos. En 
 
 ### 1. Punto de partida
 
-Copia la clase `JuegoHumano` y renómbrala como `JuegoConcurrente`.
+Copia la clase `JuegoHumano` del Laboratorio 0 y renómbrala como `JuegoConcurrente`.
 
 La nueva clase debe conservar la lógica de generación de pruebas y validación, pero debe sustituir la obtención directa de soluciones por la comunicación a través del monitor.
 
