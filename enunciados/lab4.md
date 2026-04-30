@@ -152,6 +152,14 @@ El método `jugar()` debe mantener la estructura general de `JuegoHumano`: mostr
 
 La diferencia es que, antes de lanzar las pruebas, debe arrancar los dos hilos solver (`jugadorCifras` y `jugadorLetras`) mediante `start()`. A partir de ese momento, los solvers quedarán esperando en el monitor hasta que el juego publique una prueba.
 
+> [!TIP]
+> Si `jugadorLetras` y `jugadorCifras` están declarados como interfaces o clases base (por ejemplo, `Letras` o `Cifras`), será necesario realizar un cast explícito a `Thread` antes de llamar a `start()`. Por ejemplo:
+>
+> ```java
+> ((Thread) jugadorLetras).start();
+> ((Thread) jugadorCifras).start();
+> ```
+
 Al terminar todas las pruebas, el juego debe finalizar. En este laboratorio asumimos que los solvers se ejecutan en un bucle infinito y que se puede finalizar el proceso al terminar el juego.
 
 ### 4. Cambios en `jugarPruebasLetras()`
