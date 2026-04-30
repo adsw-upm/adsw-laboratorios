@@ -107,7 +107,7 @@ Los métodos `publicarSolucionLetras` y `publicarSolucionCifras` simplemente alm
 
 ## Tarea 2: Implementar el juego concurrente
 
-En esta tarea vas a construir la clase `JuegoConcurrente` tomando como punto de partida la clase `JuegoHumano` de laboratorios anteriores.
+En esta tarea vas a construir la clase `JuegoConcurrente` tomando como punto de partida la clase `JuegoHumano` del Laboratorio 0.
 
 El objetivo es mantener la misma lógica general del juego: generación de pruebas, validación de respuestas y presentación de resultados, pero cambiar el modo en que el juego obtiene las soluciones.
 
