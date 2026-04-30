@@ -52,7 +52,7 @@ import java.util.List;
 
 public class MonitorJuego {
 
-    public static final long TIEMPO_PRUEBA = 1000;
+    public static final long TIEMPO_PRUEBA = 10000;
 
     private String letras;
     private String solucionLetras;
