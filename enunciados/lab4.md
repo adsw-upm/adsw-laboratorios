@@ -218,7 +218,15 @@ public CifrasHumanoConcurrente(Scanner sc, MonitorJuego monitorJuego) {
 }
 ```
 
-**Paso 3.** Mantén el método `obtenerCifra` (o `obtenerPalabra`) tal y como estaba en la clase original; no hace falta cambiarlo.
+**Paso 3.** Mantén la lógica de `obtenerCifra` u `obtenerPalabra`, pero si el solver lee de consola mediante un `Scanner`, protege la lectura con `synchronized (sc)`. En esta versión concurrente, los solvers humanos de cifras y letras pueden compartir el mismo `Scanner`, por lo que no deben acceder a `nextLine()` simultáneamente.
+
+Por ejemplo:
+
+```java
+synchronized (sc) {
+    return sc.nextLine().trim();
+}
+```
 
 **Paso 4.** Añade el método `run()`, que contiene el bucle infinito del hilo. Su estructura es siempre la misma: pedir al monitor los datos de la prueba actual (bloqueante hasta que el juego publique una nueva), resolver y publicar el resultado.
 
